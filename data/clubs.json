@@ -1,0 +1,1811 @@
+[
+  {
+    "id": "beacon-bay-padel",
+    "name": "Beacon Bay Padel",
+    "suburb": "Beacon Bay",
+    "city": "East London",
+    "province": "Eastern Cape",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-park-east-london",
+    "name": "Padel Park East London",
+    "suburb": null,
+    "city": "East London",
+    "province": "Eastern Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "new-era-padel",
+    "name": "New Era Padel",
+    "suburb": null,
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "old-grey-padel",
+    "name": "Old Grey Padel",
+    "suburb": null,
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "pitch-n-padel",
+    "name": "Pitch n Padel",
+    "suburb": null,
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "sunridge-action-arena",
+    "name": "Sunridge Action Arena",
+    "suburb": "Sunridge",
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "techno-padel-walmer",
+    "name": "Techno Padel Walmer",
+    "suburb": "Walmer",
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "trend-entertainment-centre",
+    "name": "Trend Entertainment Centre",
+    "suburb": null,
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "virgin-active-padel-lorraine",
+    "name": "Virgin Active Padel Lorraine",
+    "suburb": "Lorraine",
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "walmer-padel",
+    "name": "Walmer Padel",
+    "suburb": "Walmer",
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-bloemfontein",
+    "name": "Africa Padel Bloemfontein",
+    "suburb": null,
+    "city": "Bloemfontein",
+    "province": "Free State",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "net-set-ramblers-club",
+    "name": "Net Set Ramblers Club",
+    "suburb": null,
+    "city": "Bloemfontein",
+    "province": "Free State",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-in-the-woods",
+    "name": "Padel in the Woods",
+    "suburb": null,
+    "city": "Bloemfontein",
+    "province": "Free State",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padelworx",
+    "name": "PadelWorx",
+    "suburb": null,
+    "city": "Bloemfontein",
+    "province": "Free State",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "anglowealth-country-club",
+    "name": "Anglowealth Country Club",
+    "suburb": null,
+    "city": "Centurion",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "gayle-nexia",
+    "name": "Gayle @ Nexia",
+    "suburb": null,
+    "city": "Centurion",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "gayle-padel-lenasia",
+    "name": "Gayle Padel Lenasia",
+    "suburb": "Lenasia",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-al-asr",
+    "name": "Padel @ Al-Asr",
+    "suburb": "Centurion",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "proactive-padel-irene",
+    "name": "Proactive Padel Irene",
+    "suburb": "Doringkloof",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "raslouw-corner-padel-club",
+    "name": "Raslouw Corner Padel Club",
+    "suburb": "Raslouw",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "rooftop-padel-centurion",
+    "name": "Rooftop Padel Centurion",
+    "suburb": "Centurion",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "top-padel-zwartkop",
+    "name": "Top Padel Zwartkop",
+    "suburb": "Zwartkop",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-dunkeld",
+    "name": "Africa Padel Dunkeld",
+    "suburb": "Dunkeld",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-german-country-club",
+    "name": "Africa Padel German Country Club",
+    "suburb": "Sandton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-glenvista",
+    "name": "Africa Padel Glenvista",
+    "suburb": "Glenvista",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-old-park",
+    "name": "Africa Padel Old Park",
+    "suburb": null,
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-royal-johannesburg",
+    "name": "Africa Padel Royal Johannesburg",
+    "suburb": null,
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-ruimsig",
+    "name": "Africa Padel Ruimsig",
+    "suburb": "Ruimsig",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-sandton",
+    "name": "Africa Padel Sandton",
+    "suburb": "Sandton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 6,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-three-rivers",
+    "name": "Africa Padel Three Rivers",
+    "suburb": "Three Rivers",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "club-padel-morningside",
+    "name": "Club Padel Morningside",
+    "suburb": "Morningside",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "clubpadel-pirates",
+    "name": "ClubPadel Pirates",
+    "suburb": "Greenside",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "crystal-padel-randburg",
+    "name": "Crystal Padel Randburg",
+    "suburb": "Randburg",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "epic-padel-huddle-park",
+    "name": "Epic Padel Huddle Park",
+    "suburb": "Linksfield",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "ijump-clearwater-mall",
+    "name": "iJump Clearwater Mall",
+    "suburb": "Roodepoort",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": null,
+    "bookingPlatform": "Direct"
+  },
+  {
+    "id": "indoor-padel-revolution",
+    "name": "Indoor Padel Revolution",
+    "suburb": "Honeydew",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 7,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "jogo-padel-honeydew",
+    "name": "Jogo Padel Honeydew",
+    "suburb": "Honeydew",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "johannesburg-country-club",
+    "name": "Johannesburg Country Club",
+    "suburb": "Auckland Park",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 3,
+    "bookingPlatform": "Direct (members)"
+  },
+  {
+    "id": "jozi-padel-sandton",
+    "name": "Jozi Padel Sandton",
+    "suburb": "Sandton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "liv-padel-supersport-park",
+    "name": "Liv Padel Supersport Park",
+    "suburb": "Midrand",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "marks-park-padel",
+    "name": "Marks Park Padel",
+    "suburb": "Randburg",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "match-padel-fourways",
+    "name": "Match Padel Fourways",
+    "suburb": "Fourways",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 8,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "moove-fitness-padel",
+    "name": "Moove Fitness Padel",
+    "suburb": "Alexandra",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 1,
+    "bookingPlatform": "Direct"
+  },
+  {
+    "id": "n12-padel-boksburg",
+    "name": "N12 Padel Boksburg",
+    "suburb": "Boksburg",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "net-set-padel-sandton-city",
+    "name": "Net Set Padel Sandton City",
+    "suburb": "Sandton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 8,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "net-set-padel-sandton-city-rooftop",
+    "name": "Net Set Padel Sandton City Rooftop",
+    "suburb": "Sandton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-co-rietvlei",
+    "name": "Padel & Co Rietvlei",
+    "suburb": "Alberton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 6,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-365-greenstone",
+    "name": "Padel 365 Greenstone",
+    "suburb": "Greenstone",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-active-boksburg",
+    "name": "Padel Active Boksburg",
+    "suburb": "Boksburg",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-and-social-club-gray-park",
+    "name": "Padel and Social Club Gray Park",
+    "suburb": "Melrose",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-and-social-club-melrose",
+    "name": "Padel and Social Club Melrose",
+    "suburb": "Melrose",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-clear-water-crossing",
+    "name": "Padel Clear Water Crossing",
+    "suburb": "Roodepoort",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-farm-ruimsig",
+    "name": "Padel Farm Ruimsig",
+    "suburb": "Ruimsig",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-lab-rivonia-recreation-club",
+    "name": "Padel Lab Rivonia Recreation Club",
+    "suburb": "Rivonia",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-lab-ruimsig",
+    "name": "Padel Lab Ruimsig",
+    "suburb": "Ruimsig",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-perfect-erand-gardens",
+    "name": "Padel Perfect Erand Gardens",
+    "suburb": "Midrand",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-plus-benoni-country-club",
+    "name": "Padel Plus Benoni Country Club",
+    "suburb": "Benoni",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-quip-old-bens-club",
+    "name": "Padel Quip Old Bens Club",
+    "suburb": "Benoni",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-resort-waterfall",
+    "name": "Padel Resort Waterfall",
+    "suburb": "Waterfall",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-vibe-kyalami",
+    "name": "Padel Vibe Kyalami",
+    "suburb": "Kyalami",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-xtreme-midrand",
+    "name": "Padel Xtreme Midrand",
+    "suburb": "Midrand",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "propadel-craighall",
+    "name": "ProPadel Craighall",
+    "suburb": "Craighall",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "propadel-greek-club",
+    "name": "ProPadel Greek Club",
+    "suburb": "Germiston",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 6,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "qurtuba-padel-tennis",
+    "name": "Qurtuba Padel Tennis",
+    "suburb": "Sandton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "rbclub-melrose-arch",
+    "name": "RBClub Melrose Arch",
+    "suburb": "Melrose Arch",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 8,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "ridgepark-sports-club",
+    "name": "Ridgepark Sports Club",
+    "suburb": "Turfontein",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "rivonia-padel",
+    "name": "Rivonia Padel",
+    "suburb": "Sandton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "steyn-city-padel",
+    "name": "Steyn City Padel",
+    "suburb": "Sandton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "ten-by-twenty-killarney",
+    "name": "Ten By Twenty Killarney",
+    "suburb": "Killarney",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 7,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "ten-by-twenty-lenasia",
+    "name": "Ten By Twenty Lenasia",
+    "suburb": "Lenasia",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "thaba-sports-centre-mulbarton",
+    "name": "Thaba Sports Centre Mulbarton",
+    "suburb": "Mulbarton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "the-emerald-sky-padel",
+    "name": "The Emerald Sky Padel",
+    "suburb": "Sandton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "the-padel-bar-and-cafe-glendower",
+    "name": "The Padel Bar and Cafe @ Glendower",
+    "suburb": "Glendower",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "the-wanderers-club",
+    "name": "The Wanderers Club",
+    "suburb": "Illovo",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 6,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "top-padel-alberton",
+    "name": "Top Padel Alberton",
+    "suburb": "Alberton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "virgin-active-padel-bedfordview",
+    "name": "Virgin Active Padel Bedfordview",
+    "suburb": "Bedfordview",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "virgin-active-padel-huddle-park",
+    "name": "Virgin Active Padel Huddle Park",
+    "suburb": "Linksfield",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "virgin-active-padel-old-eds",
+    "name": "Virgin Active Padel Old Eds",
+    "suburb": "Linksfield",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-brooklyn",
+    "name": "Africa Padel Brooklyn",
+    "suburb": "Brooklyn",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-olympus",
+    "name": "Africa Padel Olympus",
+    "suburb": "Olympus",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "ballers-padel-arena",
+    "name": "Ballers Padel Arena",
+    "suburb": "Mountain Lake",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "balwin-padel-thaba",
+    "name": "Balwin Padel Thaba",
+    "suburb": "Centurion",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 6,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "centre-court-padel-lynnwood",
+    "name": "Centre Court Padel Lynnwood",
+    "suburb": "Lynnwood Glen",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "dpt-padel-rietvalleirand",
+    "name": "DPT Padel Rietvalleirand",
+    "suburb": "Rietvalleirand",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "gayle-padel-club",
+    "name": "Gayle Padel Club",
+    "suburb": "Raslouw",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "hartbeespoort-padel-brits",
+    "name": "Hartbeespoort Padel Brits",
+    "suburb": "Hartbeespoort",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-lab-clubview",
+    "name": "Padel Lab Clubview",
+    "suburb": "Clubview",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-lab-elardus-park",
+    "name": "Padel Lab Elardus Park",
+    "suburb": "Elardus Park",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-park-pretoria",
+    "name": "Padel Park Pretoria",
+    "suburb": null,
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-play-hartbeespoort",
+    "name": "Padel Play Hartbeespoort",
+    "suburb": "Hartbeespoort",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "play-360-rosemary-hill",
+    "name": "Play 360 Rosemary Hill",
+    "suburb": "Centurion",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "rietondale-padel",
+    "name": "Rietondale Padel",
+    "suburb": "Rietondale",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "roshnee-padel",
+    "name": "Roshnee Padel",
+    "suburb": "Roshnee",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "team-padel-pretoria",
+    "name": "Team Padel Pretoria",
+    "suburb": null,
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "the-range-padel-erasmia",
+    "name": "The Range Padel Erasmia",
+    "suburb": "Erasmia",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "thrashers-padel-menlyn",
+    "name": "Thrashers Padel Menlyn",
+    "suburb": "Menlyn",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "u-pro-action-sports-faerieglen",
+    "name": "U-Pro Action Sports Faerieglen",
+    "suburb": "Faerieglen",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "u-pro-padel-atterbury-value-mart",
+    "name": "U-Pro Padel Atterbury Value Mart",
+    "suburb": "Atterbury",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "virgin-active-padel-groenkloof",
+    "name": "Virgin Active Padel Groenkloof",
+    "suburb": "Groenkloof",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "anchorage-padel-vaal",
+    "name": "Anchorage Padel Vaal",
+    "suburb": "Vaal",
+    "city": "Vereeniging",
+    "province": "Gauteng",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "emfuleni-padel",
+    "name": "Emfuleni Padel",
+    "suburb": "Vanderbijlpark",
+    "city": "Vereeniging",
+    "province": "Gauteng",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "sebenza-padel-club-vanderbijlpark",
+    "name": "Sebenza Padel Club Vanderbijlpark",
+    "suburb": "Vanderbijlpark",
+    "city": "Vereeniging",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "ten-by-twenty-three-rivers",
+    "name": "Ten by Twenty Three Rivers",
+    "suburb": "Three Rivers",
+    "city": "Vereeniging",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "v-town-padel",
+    "name": "V-Town Padel",
+    "suburb": "Vanderbijlpark",
+    "city": "Vereeniging",
+    "province": "Gauteng",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-ballito",
+    "name": "Africa Padel Ballito",
+    "suburb": null,
+    "city": "Ballito",
+    "province": "KwaZulu-Natal",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-kloof",
+    "name": "Africa Padel Kloof",
+    "suburb": "Kloof",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-la-lucia",
+    "name": "Africa Padel La Lucia",
+    "suburb": "La Lucia",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-salt-rock",
+    "name": "Africa Padel Salt Rock",
+    "suburb": "Salt Rock",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "al-falaah-padel",
+    "name": "Al Falaah Padel",
+    "suburb": null,
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "chiltern-park",
+    "name": "Chiltern Park",
+    "suburb": "Westville",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "dream-padel-mount-edgecombe",
+    "name": "Dream Padel Mount Edgecombe",
+    "suburb": "Mount Edgecombe",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "eastbury-padel-phoenix",
+    "name": "Eastbury Padel Phoenix",
+    "suburb": "Phoenix",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "gayle-padel-berea",
+    "name": "Gayle Padel Berea",
+    "suburb": "Berea",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "gayle-padel-durban-north",
+    "name": "Gayle Padel Durban North",
+    "suburb": "Durban North",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "gayle-padel-hillcrest",
+    "name": "Gayle Padel Hillcrest",
+    "suburb": "Hillcrest",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "karibu-padel-dolphin-coast",
+    "name": "Karibu Padel Dolphin Coast",
+    "suburb": "Dolphin Coast",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "nex-padel",
+    "name": "Nex Padel",
+    "suburb": "Berea",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-ace-westville",
+    "name": "Padel Ace Westville",
+    "suburb": "Westville",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-hq-dolphin-coast",
+    "name": "Padel HQ Dolphin Coast",
+    "suburb": "Dolphin Coast",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-perfect",
+    "name": "Padel Perfect",
+    "suburb": null,
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "smash-padel-berea",
+    "name": "Smash Padel Berea",
+    "suburb": "Berea",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "the-padel-pros-dome",
+    "name": "The Padel Pros Dome",
+    "suburb": "Dolphin Coast",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "wipadel-sherwood",
+    "name": "WiPadel Sherwood",
+    "suburb": "Sherwood",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "the-racket-club-cotswold-downs",
+    "name": "The Racket Club Cotswold Downs",
+    "suburb": "Hillcrest",
+    "city": "Hillcrest",
+    "province": "KwaZulu-Natal",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "velocity-gym-padel-hilton",
+    "name": "Velocity Gym Padel Hilton",
+    "suburb": "Hilton",
+    "city": "Hilton",
+    "province": "KwaZulu-Natal",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "south-coast-padel-margate",
+    "name": "South Coast Padel Margate",
+    "suburb": "Margate",
+    "city": "Margate",
+    "province": "KwaZulu-Natal",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "net-set-padel-nottingham-road",
+    "name": "Net Set Padel Nottingham Road",
+    "suburb": "Nottingham Road",
+    "city": "Nottingham Road",
+    "province": "KwaZulu-Natal",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "umdoni-point-sports-leisure",
+    "name": "Umdoni Point Sports & Leisure",
+    "suburb": "Pennington",
+    "city": "Pennington",
+    "province": "KwaZulu-Natal",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "next-padel-pietermaritzburg",
+    "name": "Next Padel Pietermaritzburg",
+    "suburb": "Pietermaritzburg",
+    "city": "Pietermaritzburg",
+    "province": "KwaZulu-Natal",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-power-pietermaritzburg",
+    "name": "Padel Power Pietermaritzburg",
+    "suburb": "Pietermaritzburg",
+    "city": "Pietermaritzburg",
+    "province": "KwaZulu-Natal",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padelpmb",
+    "name": "PadelPMB",
+    "suburb": "Pietermaritzburg",
+    "city": "Pietermaritzburg",
+    "province": "KwaZulu-Natal",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "sheppie-padel-club",
+    "name": "Sheppie Padel Club",
+    "suburb": "Port Shepstone",
+    "city": "Port Shepstone",
+    "province": "KwaZulu-Natal",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "station-padel-sugar-village",
+    "name": "Station Padel Sugar Village",
+    "suburb": "Umhlali",
+    "city": "Umhlali",
+    "province": "KwaZulu-Natal",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-nation-umhlanga",
+    "name": "Padel Nation Umhlanga",
+    "suburb": null,
+    "city": "Umhlanga",
+    "province": "KwaZulu-Natal",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "virgin-active-padel-gateway",
+    "name": "Virgin Active Padel Gateway",
+    "suburb": "Gateway",
+    "city": "Umhlanga",
+    "province": "KwaZulu-Natal",
+    "courtCount": 6,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "534-padel",
+    "name": "534 Padel",
+    "suburb": null,
+    "city": "Polokwane",
+    "province": "Limpopo",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "n1-padel-polokwane",
+    "name": "N1 Padel Polokwane",
+    "suburb": null,
+    "city": "Polokwane",
+    "province": "Limpopo",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-24-mbombela",
+    "name": "Padel 24 Mbombela",
+    "suburb": null,
+    "city": "Mbombela",
+    "province": "Mpumalanga",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "play-360",
+    "name": "Play 360",
+    "suburb": null,
+    "city": "Mbombela",
+    "province": "Mpumalanga",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-101",
+    "name": "Padel 101",
+    "suburb": null,
+    "city": "Standerton",
+    "province": "Mpumalanga",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "net-set-white-river",
+    "name": "Net Set White River",
+    "suburb": null,
+    "city": "White River",
+    "province": "Mpumalanga",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "techno-padel-potchefstroom",
+    "name": "Techno Padel Potchefstroom",
+    "suburb": null,
+    "city": "Potchefstroom",
+    "province": "North West",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-t-rustenburg",
+    "name": "Padel T Rustenburg",
+    "suburb": null,
+    "city": "Rustenburg",
+    "province": "North West",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "action-padel-century-city",
+    "name": "Action Padel Century City",
+    "suburb": "Century City",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "action-padel-diep-river",
+    "name": "Action Padel Diep River",
+    "suburb": "Diep River",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "action-padel-edgemead",
+    "name": "Action Padel Edgemead",
+    "suburb": "Edgemead",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-camps-bay",
+    "name": "Africa Padel Camps Bay",
+    "suburb": "Camps Bay",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-claremont",
+    "name": "Africa Padel Claremont",
+    "suburb": "Claremont",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 9,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-v-a",
+    "name": "Africa Padel V&A",
+    "suburb": "V&A Waterfront",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "arturf-padel-arena",
+    "name": "Arturf Padel Arena",
+    "suburb": null,
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 6,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "atlantic-padel-sunningdale",
+    "name": "Atlantic Padel Sunningdale",
+    "suburb": "Sunningdale",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "atlantic-padel-table-view",
+    "name": "Atlantic Padel Table View",
+    "suburb": "Table View",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "aura-padel-club",
+    "name": "Aura Padel Club",
+    "suburb": null,
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "bay-padel-tokai",
+    "name": "Bay Padel Tokai",
+    "suburb": "Tokai",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 6,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "camps-bay-retreat-padel",
+    "name": "Camps Bay Retreat Padel",
+    "suburb": "Camps Bay",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 1,
+    "bookingPlatform": "Direct"
+  },
+  {
+    "id": "eden-padel",
+    "name": "Eden Padel",
+    "suburb": "Durbanville",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "epicentre-padel",
+    "name": "Epicentre Padel",
+    "suburb": null,
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "glen-virgin-active-padel-club",
+    "name": "Glen Virgin Active Padel Club",
+    "suburb": "Clifton",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "kelvin-grove-newlands",
+    "name": "Kelvin Grove Newlands",
+    "suburb": "Newlands",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 3,
+    "bookingPlatform": "Direct"
+  },
+  {
+    "id": "lekka-padel-milnerton",
+    "name": "Lekka Padel Milnerton",
+    "suburb": "Milnerton",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "mount-nelson-hotel-padel",
+    "name": "Mount Nelson Hotel Padel",
+    "suburb": "Gardens",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 1,
+    "bookingPlatform": "Direct"
+  },
+  {
+    "id": "net-set-camps-bay-retreat",
+    "name": "Net Set Camps Bay Retreat",
+    "suburb": "Camps Bay",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 1,
+    "bookingPlatform": "Direct"
+  },
+  {
+    "id": "padel-365-noordhoek-emporium",
+    "name": "Padel 365 Noordhoek Emporium",
+    "suburb": "Noordhoek",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-365-richmond-park",
+    "name": "Padel 365 Richmond Park",
+    "suburb": "Montague Gardens",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-century-city-slipstream",
+    "name": "Padel Century City Slipstream",
+    "suburb": "Century City",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-lansdowne",
+    "name": "Padel Lansdowne",
+    "suburb": "Lansdowne",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-life-old-mutual-sports-club",
+    "name": "Padel Life Old Mutual Sports Club",
+    "suburb": "Pinelands",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 6,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-milnerton-richmond",
+    "name": "Padel Milnerton Richmond",
+    "suburb": "Milnerton",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-ottery",
+    "name": "Padel Ottery",
+    "suburb": "Ottery",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-rondebosch",
+    "name": "Padel Rondebosch",
+    "suburb": "Rondebosch",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-turfhall",
+    "name": "Padel Turfhall",
+    "suburb": "Turfhall",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-5-hout-bay",
+    "name": "Padel@5 Hout Bay",
+    "suburb": "Hout Bay",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "point-padel-club",
+    "name": "Point Padel Club",
+    "suburb": "Point",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "racket-ball-club-bree-street",
+    "name": "Racket+Ball Club Bree Street",
+    "suburb": "Bree Street",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "rb-club-cape-town-indoor",
+    "name": "RB Club Cape Town (Indoor)",
+    "suburb": "Cape Town CBD",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "stadium-on-main-padel",
+    "name": "Stadium on Main Padel",
+    "suburb": "Claremont",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "virgin-active-padel-paarden-eiland",
+    "name": "Virgin Active Padel Paarden Eiland",
+    "suburb": "Paarden Eiland",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "virgin-active-padel-pinehurst",
+    "name": "Virgin Active Padel Pinehurst",
+    "suburb": "Durbanville",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "volea-padel-kommetjie",
+    "name": "Volea Padel Kommetjie",
+    "suburb": "Kommetjie",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "welgemoed-padel",
+    "name": "Welgemoed Padel",
+    "suburb": "Welgemoed",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "courtCount": 1,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "garden-route-padel-george",
+    "name": "Garden Route Padel George",
+    "suburb": "Glenwood",
+    "city": "George",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "lets-play-padel-george",
+    "name": "Lets Play Padel George",
+    "suburb": "George",
+    "city": "George",
+    "province": "Western Cape",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "telesto-tennis-academy",
+    "name": "Telesto Tennis Academy",
+    "suburb": null,
+    "city": "George",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "play-padel-hermanus-sports-club",
+    "name": "Play Padel Hermanus Sports Club",
+    "suburb": "Hermanus",
+    "city": "Hermanus",
+    "province": "Western Cape",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "livpadel-knysna",
+    "name": "LivPadel Knysna",
+    "suburb": null,
+    "city": "Knysna",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "simola-padel",
+    "name": "Simola Padel",
+    "suburb": null,
+    "city": "Knysna",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "mossel-bay-padel",
+    "name": "Mossel Bay Padel",
+    "suburb": "Mossel Bay",
+    "city": "Mossel Bay",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "point-padel-mossel-bay",
+    "name": "Point Padel Mossel Bay",
+    "suburb": "Mossel Bay",
+    "city": "Mossel Bay",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-ace-paarl",
+    "name": "Padel Ace Paarl",
+    "suburb": null,
+    "city": "Paarl",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "val-de-vie-padel",
+    "name": "Val de Vie Padel",
+    "suburb": "Val de Vie",
+    "city": "Paarl",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Direct"
+  },
+  {
+    "id": "absolute-padel-plett",
+    "name": "Absolute Padel Plett",
+    "suburb": null,
+    "city": "Plettenberg Bay",
+    "province": "Western Cape",
+    "courtCount": 3,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-plettenberg-bay",
+    "name": "Africa Padel Plettenberg Bay",
+    "suburb": null,
+    "city": "Plettenberg Bay",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "forest-gate-padel",
+    "name": "Forest Gate Padel",
+    "suburb": null,
+    "city": "Plettenberg Bay",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padel-365-plett-country-club",
+    "name": "Padel 365 Plett Country Club",
+    "suburb": null,
+    "city": "Plettenberg Bay",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "padelx-somerset-west",
+    "name": "PadelX Somerset West",
+    "suburb": "Somerset West",
+    "city": "Somerset West",
+    "province": "Western Cape",
+    "courtCount": null,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "virgin-active-padel-lourensford",
+    "name": "Virgin Active Padel Lourensford",
+    "suburb": "Lourensford",
+    "city": "Somerset West",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "africa-padel-van-der-stel",
+    "name": "Africa Padel Van Der Stel",
+    "suburb": null,
+    "city": "Stellenbosch",
+    "province": "Western Cape",
+    "courtCount": 4,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "club-padel-stellenbosch",
+    "name": "Club Padel Stellenbosch",
+    "suburb": null,
+    "city": "Stellenbosch",
+    "province": "Western Cape",
+    "courtCount": 5,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "de-zalze-golf-estate",
+    "name": "De Zalze Golf Estate",
+    "suburb": null,
+    "city": "Stellenbosch",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Playtomic"
+  },
+  {
+    "id": "hazendal-wine-estate-padel",
+    "name": "Hazendal Wine Estate Padel",
+    "suburb": null,
+    "city": "Stellenbosch",
+    "province": "Western Cape",
+    "courtCount": 1,
+    "bookingPlatform": "Direct"
+  },
+  {
+    "id": "zorgvliet-wines-padel",
+    "name": "Zorgvliet Wines Padel",
+    "suburb": "Helshoogte",
+    "city": "Stellenbosch",
+    "province": "Western Cape",
+    "courtCount": 2,
+    "bookingPlatform": "Direct"
+  }
+]
