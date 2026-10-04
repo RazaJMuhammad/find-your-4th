@@ -10,10 +10,7 @@ export default async function NewGamePage({ searchParams }: { searchParams: Prom
   const fromDb = await loadClubs();
   const profile = await getProfile();
   if (fromDb && !profile) redirect("/login?next=/games/new");
-  if (fromDb && profile && profile.level_score == null && !profile.level) redirect("/onboarding?next=/games/new");
-  if (fromDb && profile && (profile.level_score == null || !profile.age_confirmed || !profile.terms_accepted_at)) {
-    redirect("/onboarding?next=/games/new");
-  }
+  if (fromDb && profile && !profile.onboarded_at) redirect("/onboarding?next=/games/new");
   const clubs = fromDb ?? snapshotClubs();
   const connected = fromDb !== null;
   return (

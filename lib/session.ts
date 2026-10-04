@@ -1,5 +1,5 @@
 import { createClient } from "@/lib/supabase/server";
-import type { PlayerGender, SkillLevel } from "@/lib/domain/rules";
+import { GAME_PREFERENCES, LEVEL_SCORES, type GamePreference, type PlayerGender, type SkillLevel } from "@/lib/domain/rules";
 
 export type Profile = {
   id: string;
@@ -22,6 +22,13 @@ export type Profile = {
   fantasy_opt_in: boolean;
   is_admin: boolean;
   clubs: string[];
+  first_name: string | null;
+  surname: string | null;
+  phone: string | null;
+  playtomic_screenshot_path: string | null;
+  preferred_genders: GamePreference[];
+  preferred_levels: number[];
+  onboarded_at: string | null;
 };
 
 export async function getUserId() {
@@ -30,6 +37,27 @@ export async function getUserId() {
   const { data, error } = await supabase.auth.getClaims();
   if (error || !data?.claims || typeof data.claims.sub !== "string") return null;
   return data.claims.sub;
+}
+
+function asText(value: unknown) {
+  return typeof value === "string" && value.length > 0 ? value : null;
+}
+
+function asStringList(value: unknown) {
+  return Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
+}
+
+function asGenders(value: unknown): GamePreference[] {
+  const allowed = new Set<string>(GAME_PREFERENCES);
+  return asStringList(value).filter((item): item is GamePreference => allowed.has(item));
+}
+
+function asLevels(value: unknown) {
+  if (!Array.isArray(value)) return [];
+  return value.flatMap((item) => {
+    const score = typeof item === "number" ? item : typeof item === "string" ? Number(item) : Number.NaN;
+    return LEVEL_SCORES.includes(score as (typeof LEVEL_SCORES)[number]) ? [score] : [];
+  });
 }
 
 function asProfile(value: unknown): Profile | null {
@@ -56,7 +84,14 @@ function asProfile(value: unknown): Profile | null {
     notif_prefs: row.notif_prefs ?? {},
     fantasy_opt_in: Boolean(row.fantasy_opt_in),
     is_admin: Boolean(row.is_admin),
-    clubs: Array.isArray(row.clubs) ? row.clubs.filter((id): id is string => typeof id === "string") : [],
+    clubs: asStringList(row.clubs),
+    first_name: asText(row.first_name),
+    surname: asText(row.surname),
+    phone: asText(row.phone),
+    playtomic_screenshot_path: asText(row.playtomic_screenshot_path),
+    preferred_genders: asGenders(row.preferred_genders),
+    preferred_levels: asLevels(row.preferred_levels),
+    onboarded_at: asText(row.onboarded_at),
   };
 }
 

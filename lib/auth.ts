@@ -123,14 +123,14 @@ export function safeNext(value: string | null | undefined, requestOrigin?: strin
 
 export function landingPath(next: string, account: unknown) {
   const dest = safeNext(next);
-  if (hasAcceptedTerms(account) || dest.startsWith("/onboarding")) return dest;
+  if (hasOnboarded(account) || dest.startsWith("/onboarding")) return dest;
   return `/onboarding?next=${encodeURIComponent(dest)}`;
 }
 
-function hasAcceptedTerms(account: unknown) {
+function hasOnboarded(account: unknown) {
   if (!account || typeof account !== "object") return false;
-  const terms = (account as { terms_accepted_at?: unknown }).terms_accepted_at;
-  return typeof terms === "string" && terms.length > 0;
+  const onboarded = (account as { onboarded_at?: unknown }).onboarded_at;
+  return typeof onboarded === "string" && onboarded.length > 0;
 }
 
 export function isRecoveryNext(path: string) {

@@ -41,9 +41,10 @@ describe("safe redirects", () => {
     expect(next).toBe("/games/123");
   });
 
-  it("sends unfinished accounts to onboarding and keeps the destination", () => {
-    expect(landingPath("/games/1", { terms_accepted_at: null })).toBe("/onboarding?next=%2Fgames%2F1");
-    expect(landingPath("/games/1", { terms_accepted_at: "2026-09-01T00:00:00Z" })).toBe("/games/1");
+  it("sends accounts that have not finished their details to onboarding", () => {
+    expect(landingPath("/games/1", { onboarded_at: null })).toBe("/onboarding?next=%2Fgames%2F1");
+    expect(landingPath("/games/1", { terms_accepted_at: "2026-09-01T00:00:00Z" })).toBe("/onboarding?next=%2Fgames%2F1");
+    expect(landingPath("/games/1", { onboarded_at: "2026-09-01T00:00:00Z" })).toBe("/games/1");
   });
 
   it("builds query strings without dropping existing params", () => {
