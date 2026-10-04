@@ -1,0 +1,54 @@
+---
+description: Production standards for this codebase
+alwaysApply: true
+---
+
+# Project context
+- Production app serving thousands of concurrent users. Prioritise correctness, security, performance and maintainability over speed of delivery.
+- Stack: Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, Supabase (Postgres and Auth), Vercel. PWA via Serwist. Tests with Vitest.
+- Before writing new code, check for existing utilities, components and patterns in the repo and reuse them.
+
+# Code quality
+- Strict typing. No `any`, no unused code, no dead imports.
+- Small, single-purpose functions and components. Descriptive names.
+- Handle errors explicitly. Never swallow exceptions. Return safe, generic messages to the client and log details server-side.
+- Validate all external input at the boundary (schema validation).
+- Add or update tests for any logic you change. Do not change unrelated code.
+
+# Security
+- Never hardcode secrets. Use environment variables.
+- Parameterised queries only. Never build SQL with string concatenation.
+- Enforce authentication and authorisation on every endpoint and check resource ownership.
+- Sanitise output to prevent XSS. Set secure headers and cookies.
+- Rate limit public and auth endpoints.
+
+# Database and SQL
+- Every UPDATE and DELETE must have an explicit WHERE clause. Every SELECT must filter by key or condition and use LIMIT or pagination where the result set can grow.
+- Select only the columns needed. No `SELECT *`.
+- Add indexes for columns used in WHERE, JOIN and ORDER BY. Use composite indexes in the order of query filters. Explain the index reasoning in a comment or in your reply.
+- Avoid N+1 queries. Use joins or batched queries.
+- Use transactions for multi-step writes. Migrations must be reversible and safe on large tables.
+
+# Performance
+- Target fast load times: code split, lazy load below-the-fold content, optimise images (modern formats, correct sizing, lazy loading).
+- Cache where appropriate (HTTP caching, server cache, memoisation) and state the invalidation strategy.
+- Avoid unnecessary re-renders and large bundles. Flag any dependency that adds significant weight.
+
+# SEO and accessibility
+- Semantic HTML, one h1 per page, proper heading order.
+- Unique title and meta description per page, canonical URLs, Open Graph tags, sitemap and robots.
+- Server render or pre-render public pages. Target good Core Web Vitals (LCP, CLS, INP).
+- Meet WCAG AA: contrast, keyboard navigation, focus states, alt text, labelled form fields.
+
+# UI/UX
+- Mobile first and responsive. Consistent spacing, type scale and colour tokens.
+- Always design loading, empty, error and success states.
+- Clear visual hierarchy, obvious primary actions, minimal cognitive load, fast feedback on interaction.
+
+# Writing style
+- Do not use em dashes or en dashes in any user-facing text, comments or copy. Use commas, full stops or colons instead.
+
+# How to respond
+- For non-trivial tasks, briefly state your plan first, then implement.
+- Call out security, performance or scalability risks you notice, even if I did not ask.
+- If a requirement is ambiguous, ask one focused question before building.
