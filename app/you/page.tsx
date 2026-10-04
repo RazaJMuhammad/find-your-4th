@@ -24,8 +24,14 @@ export default async function YouPage({ searchParams }: { searchParams: Promise<
       {params.suggested ? <Notice>Club suggestion sent.</Notice> : null}
       {profile ? (
         <div className="card">
-          <p className="text-lg font-semibold">{profile.display_name}</p>
-          <p className="text-sm text-ink-soft">{profile.level_score != null ? levelScoreLabel[profile.level_score] : "Level not set"}</p>
+          <p className="text-lg font-semibold">{profile.first_name && profile.surname ? `${profile.first_name} ${profile.surname}` : profile.display_name}</p>
+          <p className="text-sm text-ink-soft">
+            {profile.preferred_levels.length > 0
+              ? profile.preferred_levels.map((score) => levelScoreLabel[score] ?? score).join(", ")
+              : profile.level_score != null
+                ? levelScoreLabel[profile.level_score]
+                : "Level not set"}
+          </p>
           {profile.fantasy_opt_in ? <a className="text-sm" href="https://fantasypadel.com">Fantasy Padel</a> : null}
         </div>
       ) : (

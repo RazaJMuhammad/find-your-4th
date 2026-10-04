@@ -12,8 +12,8 @@ export default async function OnboardingPage({ searchParams }: { searchParams: P
   const clubs = (await loadClubs()) ?? snapshotClubs();
   return (
     <div className="mx-auto max-w-md space-y-4">
-      <h1 className="text-3xl font-semibold tracking-tight">Your profile</h1>
-      <p className="text-ink-soft">Level is what you say it is for now. Show-up rate comes from games, once you have played a few.</p>
+      <h1 className="text-3xl font-semibold tracking-tight">Your details</h1>
+      <p className="text-ink-soft">Add your name, the clubs you play at, and the games you want. You can change this later.</p>
       {params.error ? <Notice>{params.error}</Notice> : null}
       {(await loadClubs()) === null ? <SetupNotice /> : null}
       <ProfileForm profile={profile} clubs={clubs} next={params.next} />

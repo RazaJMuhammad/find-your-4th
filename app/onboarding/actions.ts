@@ -1,39 +1,62 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { LEVEL_SCORES } from "@/lib/domain/rules";
+import { GAME_PREFERENCES, LEVEL_SCORES, MAX_HOME_CLUBS, type GamePreference } from "@/lib/domain/rules";
 import { createClient } from "@/lib/supabase/server";
 import { getUserId } from "@/lib/session";
+
+const PREFERRED_GENDERS = new Set<string>(GAME_PREFERENCES);
+
+function unique(values: string[]) {
+  return [...new Set(values)];
+}
+
+function normalizePhone(value: string) {
+  const compact = value.trim().replace(/[\s()-]/g, "");
+  return /^\+?[0-9]{8,15}$/.test(compact) ? compact : null;
+}
 
 export async function saveProfile(formData: FormData) {
   const userId = await getUserId();
   if (!userId) redirect("/login?next=/onboarding");
-  const displayName = String(formData.get("display_name") ?? "").trim();
-  const levelScore = Number(formData.get("level_score"));
+  const firstName = String(formData.get("first_name") ?? "").trim();
+  const surname = String(formData.get("surname") ?? "").trim();
+  const phone = normalizePhone(String(formData.get("phone") ?? ""));
   const next = String(formData.get("next") ?? "/");
   const back = `/onboarding?next=${encodeURIComponent(next)}`;
-  if (displayName.length < 1 || displayName.length > 40) redirect(`${back}&error=Use%20a%20name%20up%20to%2040%20characters`);
-  if (!LEVEL_SCORES.includes(levelScore as (typeof LEVEL_SCORES)[number])) redirect(`${back}&error=Pick%20a%20level`);
-  const clubIds = formData.getAll("club_id").filter((value): value is string => typeof value === "string" && value.length > 0);
-  if (clubIds.length > 3) redirect(`${back}&error=Pick%20at%20most%203%20home%20clubs`);
-  const prefs = Object.fromEntries(
-    ["matches", "requests", "booking", "reminders", "ratings"].map((key) => [key, formData.get(`pref_${key}`) === "on" ? "true" : "false"]),
+  if (firstName.length < 1 || firstName.length > 30) redirect(`${back}&error=Use%20a%20first%20name%20up%20to%2030%20characters`);
+  if (surname.length < 1 || surname.length > 30) redirect(`${back}&error=Use%20a%20surname%20up%20to%2030%20characters`);
+  if (`${firstName} ${surname}`.length > 40) redirect(`${back}&error=Name%20and%20surname%20together%20can%20be%20at%20most%2040%20characters`);
+  if (!phone) redirect(`${back}&error=Enter%20a%20phone%20number`);
+  const clubIds = unique(formData.getAll("club_id").filter((value): value is string => typeof value === "string" && value.length > 0));
+  if (clubIds.length < 1) redirect(`${back}&error=Pick%20at%20least%20one%20club`);
+  if (clubIds.length > MAX_HOME_CLUBS) redirect(`${back}&error=Pick%20at%20most%2015%20clubs`);
+  const genders = unique(
+    formData.getAll("preferred_gender").filter((value): value is GamePreference => typeof value === "string" && PREFERRED_GENDERS.has(value)),
   );
+  if (genders.length < 1) redirect(`${back}&error=Pick%20at%20least%20one%20game%20type`);
+  const levels = unique(
+    formData
+      .getAll("preferred_level")
+      .map((value) => Number(value))
+      .filter((value) => LEVEL_SCORES.includes(value as (typeof LEVEL_SCORES)[number]))
+      .map(String),
+  ).map(Number);
+  if (levels.length < 1) redirect(`${back}&error=Pick%20at%20least%20one%20level`);
+  const screenshot = String(formData.get("playtomic_screenshot_path") ?? "").trim();
+  const screenshotOk = new RegExp(
+    `^${userId.toLowerCase()}/[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}\\.(jpg|jpeg|png|webp)$`,
+  ).test(screenshot);
+  if (screenshot && !screenshotOk) redirect(`${back}&error=Screenshot%20path%20is%20not%20valid`);
   const payload = {
-    display_name: displayName,
-    level_score: levelScore,
-    avatar_url: String(formData.get("avatar_url") ?? ""),
-    gender: String(formData.get("gender") ?? "unspecified"),
-    playtomic_url: String(formData.get("playtomic_url") ?? ""),
-    search_radius_km: Number(formData.get("search_radius_km") || 15),
+    first_name: firstName,
+    surname,
+    phone,
     age_confirmed: formData.get("age_confirmed") === "on",
     accept_terms: formData.get("accept_terms") === "on",
-    whatsapp: String(formData.get("whatsapp") ?? ""),
-    whatsapp_share: formData.get("whatsapp_share") === "on",
-    quiet_start: String(formData.get("quiet_start") ?? ""),
-    quiet_end: String(formData.get("quiet_end") ?? ""),
-    notif_prefs: prefs,
-    fantasy_opt_in: formData.get("fantasy_opt_in") === "on",
+    playtomic_screenshot_path: screenshot,
+    preferred_genders: genders,
+    preferred_levels: levels,
     club_ids: clubIds,
   };
   const supabase = await createClient();

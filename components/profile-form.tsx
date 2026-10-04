@@ -1,27 +1,32 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type FormEvent } from "react";
 import Link from "next/link";
-import { genderChoiceLabel, levelScoreLabel } from "@/config/copy";
-import { LEVEL_SCORES } from "@/lib/domain/rules";
+import { genderLabel, levelScoreLabel } from "@/config/copy";
+import { GAME_PREFERENCES, LEVEL_SCORES, MAX_HOME_CLUBS, type GamePreference } from "@/lib/domain/rules";
 import type { Club } from "@/lib/game-view";
 import type { Profile } from "@/lib/session";
 import { saveProfile } from "@/app/onboarding/actions";
 import { createClient } from "@/lib/supabase/client";
 
-const categories = [
-  ["matches", "Games and changes"],
-  ["requests", "Join requests"],
-  ["booking", "Booking"],
-  ["reminders", "Reminders"],
-  ["ratings", "Ratings"],
-] as const;
+const SCREENSHOT_TYPES: Record<string, string> = {
+  "image/jpeg": "jpg",
+  "image/png": "png",
+  "image/webp": "webp",
+};
+
+const SCREENSHOT_LIMIT = 5 * 1024 * 1024;
 
 export function ProfileForm({ profile, clubs, next }: { profile: Profile | null; clubs: Club[]; next?: string }) {
   const [query, setQuery] = useState("");
   const [chosen, setChosen] = useState<string[]>(profile?.clubs ?? []);
-  const [avatar, setAvatar] = useState(profile?.avatar_url ?? "");
+  const [genders, setGenders] = useState<GamePreference[]>(profile?.preferred_genders ?? []);
+  const [levels, setLevels] = useState<number[]>(profile?.preferred_levels ?? []);
+  const [screenshot, setScreenshot] = useState(profile?.playtomic_screenshot_path ?? "");
+  const [preview, setPreview] = useState("");
+  const [uploading, setUploading] = useState(false);
   const [uploadError, setUploadError] = useState("");
+  const [formError, setFormError] = useState("");
   const results = useMemo(() => {
     const needle = query.trim().toLowerCase();
     return clubs
@@ -29,108 +34,142 @@ export function ProfileForm({ profile, clubs, next }: { profile: Profile | null;
       .slice(0, 30);
   }, [clubs, query]);
 
-  function toggle(id: string) {
+  useEffect(() => {
+    if (!screenshot || !profile) return;
+    const supabase = createClient();
+    if (!supabase) return;
+    let cancelled = false;
+    void supabase.storage
+      .from("playtomic-screenshots")
+      .createSignedUrl(screenshot, 60 * 10)
+      .then(({ data }) => {
+        if (!cancelled && data?.signedUrl) setPreview(data.signedUrl);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [screenshot, profile]);
+
+  function toggleClub(id: string) {
     setChosen((current) => {
       if (current.includes(id)) return current.filter((item) => item !== id);
-      if (current.length >= 3) return current;
+      if (current.length >= MAX_HOME_CLUBS) return current;
       return [...current, id];
     });
   }
 
-  async function onPhoto(file: File | undefined) {
+  function toggleGender(value: GamePreference) {
+    setGenders((current) => (current.includes(value) ? current.filter((item) => item !== value) : [...current, value]));
+  }
+
+  function toggleLevel(value: number) {
+    setLevels((current) => (current.includes(value) ? current.filter((item) => item !== value) : [...current, value].sort((a, b) => a - b)));
+  }
+
+  async function onScreenshot(file: File | undefined) {
     if (!file || !profile) return;
     setUploadError("");
-    const supabase = createClient();
-    if (!supabase) {
-      setUploadError("Photo upload needs Supabase.");
+    const extension = SCREENSHOT_TYPES[file.type];
+    if (!extension) {
+      setUploadError("Use a JPEG, PNG, or WebP image.");
       return;
     }
-    const path = `${profile.id}/${crypto.randomUUID()}-${file.name.replace(/[^\w.]+/g, "")}`;
-    const { error } = await supabase.storage.from("avatars").upload(path, file);
+    if (file.size > SCREENSHOT_LIMIT) {
+      setUploadError("That image is larger than 5 MB.");
+      return;
+    }
+    const supabase = createClient();
+    if (!supabase) {
+      setUploadError("Screenshot upload needs Supabase.");
+      return;
+    }
+    setUploading(true);
+    const path = `${profile.id.toLowerCase()}/${crypto.randomUUID()}.${extension}`;
+    const { error } = await supabase.storage.from("playtomic-screenshots").upload(path, file, { contentType: file.type });
+    setUploading(false);
     if (error) {
       setUploadError(error.message);
       return;
     }
-    setAvatar(supabase.storage.from("avatars").getPublicUrl(path).data.publicUrl);
+    setPreview(URL.createObjectURL(file));
+    setScreenshot(path);
+  }
+
+  function onSubmit(event: FormEvent<HTMLFormElement>) {
+    if (uploading) {
+      event.preventDefault();
+      return;
+    }
+    if (chosen.length < 1 || genders.length < 1 || levels.length < 1) {
+      event.preventDefault();
+      setFormError("Pick at least one club, one game type, and one level.");
+      return;
+    }
+    setFormError("");
   }
 
   return (
-    <form action={saveProfile} className="space-y-4">
+    <form action={saveProfile} className="space-y-4" onSubmit={onSubmit}>
       <input type="hidden" name="next" value={next ?? "/"} />
-      <input type="hidden" name="avatar_url" value={avatar} />
+      <input type="hidden" name="playtomic_screenshot_path" value={screenshot} />
       {chosen.map((id) => <input key={id} type="hidden" name="club_id" value={id} />)}
+      {genders.map((value) => <input key={value} type="hidden" name="preferred_gender" value={value} />)}
+      {levels.map((value) => <input key={value} type="hidden" name="preferred_level" value={value} />)}
       <label className="field">
-        Name
-        <input name="display_name" required maxLength={40} defaultValue={profile?.display_name ?? ""} />
+        First name
+        <input name="first_name" required maxLength={30} autoComplete="given-name" defaultValue={profile?.first_name ?? ""} />
       </label>
       <label className="field">
-        Photo
-        <input type="file" accept="image/*" onChange={(event) => void onPhoto(event.target.files?.[0])} />
-      </label>
-      {avatar ? <img src={avatar} alt="" className="h-16 w-16 rounded-avatar object-cover" /> : null}
-      {uploadError ? <p className="text-sm text-danger">{uploadError}</p> : null}
-      <label className="field">
-        Level, self-declared
-        <select name="level_score" defaultValue={String(profile?.level_score ?? 4)} required>
-          {LEVEL_SCORES.map((score) => <option key={score} value={score}>{levelScoreLabel[score]}</option>)}
-        </select>
-      </label>
-      <label className="field">
-        Gender, used only to check who can join
-        <select name="gender" defaultValue={profile?.gender ?? "unspecified"}>
-          {Object.entries(genderChoiceLabel).map(([value, label]) => <option key={value} value={value}>{label}</option>)}
-        </select>
-      </label>
-      <label className="field">
-        Playtomic profile, optional
-        <input name="playtomic_url" type="url" defaultValue={profile?.playtomic_url ?? ""} placeholder="https://" />
+        Surname
+        <input name="surname" required maxLength={30} autoComplete="family-name" defaultValue={profile?.surname ?? ""} />
       </label>
       <fieldset className="card space-y-3">
-        <legend className="font-semibold">Home clubs, up to 3</legend>
+        <legend className="font-semibold">Clubs you prefer</legend>
         <input className="input w-full" placeholder="Search clubs" value={query} onChange={(event) => setQuery(event.target.value)} />
         <div className="max-h-48 space-y-1 overflow-auto">
           {results.map((club) => (
             <label key={club.id} className="flex items-center gap-2 text-sm">
-              <input type="checkbox" checked={chosen.includes(club.id)} onChange={() => toggle(club.id)} />
+              <input type="checkbox" checked={chosen.includes(club.id)} onChange={() => toggleClub(club.id)} />
               {club.name} · {club.city}
             </label>
           ))}
         </div>
-        <p className="text-sm text-ink-soft">{chosen.length} selected</p>
+        <p className="text-sm text-ink-soft">{chosen.length} of {MAX_HOME_CLUBS} clubs selected.</p>
       </fieldset>
-      <label className="field">
-        Search radius, km
-        <input name="search_radius_km" type="number" min={1} max={80} defaultValue={profile?.search_radius_km ?? 15} />
-      </label>
-      <label className="field">
-        WhatsApp, optional
-        <input name="whatsapp" defaultValue={profile?.whatsapp ?? ""} placeholder="27..." />
-      </label>
-      <label className="flex items-center gap-2 text-sm">
-        <input name="whatsapp_share" type="checkbox" defaultChecked={profile?.whatsapp_share} />
-        Share my WhatsApp with confirmed players
-      </label>
-      <div className="grid grid-cols-2 gap-3">
-        <label className="field">Quiet from
-          <input name="quiet_start" type="time" defaultValue={profile?.quiet_start?.slice(0, 5) ?? ""} />
-        </label>
-        <label className="field">Quiet until
-          <input name="quiet_end" type="time" defaultValue={profile?.quiet_end?.slice(0, 5) ?? ""} />
-        </label>
-      </div>
       <fieldset className="space-y-2">
-        <legend className="text-sm font-semibold">Notifications</legend>
-        {categories.map(([key, label]) => (
-          <label key={key} className="flex items-center gap-2 text-sm">
-            <input name={`pref_${key}`} type="checkbox" defaultChecked={profile?.notif_prefs?.[key] !== "false"} />
-            {label}
-          </label>
-        ))}
+        <legend className="text-sm font-semibold">Games you want to play</legend>
+        <div className="flex flex-wrap gap-2">
+          {GAME_PREFERENCES.map((value) => (
+            <label key={value} className="choice">
+              <input className="sr-only" type="checkbox" checked={genders.includes(value)} onChange={() => toggleGender(value)} />
+              {genderLabel[value]}
+            </label>
+          ))}
+        </div>
       </fieldset>
-      <label className="flex items-center gap-2 text-sm">
-        <input name="fantasy_opt_in" type="checkbox" defaultChecked={profile?.fantasy_opt_in} />
-        Show a Fantasy Padel link. Off unless you turn it on.
+      <fieldset className="space-y-2">
+        <legend className="text-sm font-semibold">Difficulty you want to play</legend>
+        <div className="flex flex-wrap gap-2">
+          {LEVEL_SCORES.map((score) => (
+            <label key={score} className="choice">
+              <input className="sr-only" type="checkbox" checked={levels.includes(score)} onChange={() => toggleLevel(score)} />
+              {levelScoreLabel[score]}
+            </label>
+          ))}
+        </div>
+      </fieldset>
+      <label className="field">
+        Phone number
+        <input name="phone" type="tel" required autoComplete="tel" defaultValue={profile?.phone ?? ""} placeholder="27..." />
       </label>
+      <label className="field">
+        Playtomic profile screenshot, optional
+        <input type="file" accept="image/jpeg,image/png,image/webp" onChange={(event) => void onScreenshot(event.target.files?.[0])} />
+      </label>
+      {preview ? <img src={preview} alt="Playtomic profile screenshot" className="max-h-48 rounded-card object-contain" /> : null}
+      {uploading ? <p className="text-sm text-ink-soft">Uploading screenshot...</p> : null}
+      {uploadError ? <p className="text-sm text-danger">{uploadError}</p> : null}
+      {formError ? <p className="text-sm text-danger">{formError}</p> : null}
       <label className="flex items-center gap-2 text-sm">
         <input name="age_confirmed" type="checkbox" required defaultChecked={profile?.age_confirmed} />
         I am 18 or older
@@ -139,7 +178,7 @@ export function ProfileForm({ profile, clubs, next }: { profile: Profile | null;
         <input name="accept_terms" type="checkbox" required defaultChecked={Boolean(profile?.terms_accepted_at)} />
         I accept the <Link href="/legal/terms">terms</Link>
       </label>
-      <button className="btn" type="submit">Save profile</button>
+      <button className="btn" type="submit" disabled={uploading}>Save details</button>
     </form>
   );
 }

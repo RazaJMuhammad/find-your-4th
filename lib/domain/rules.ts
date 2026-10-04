@@ -17,6 +17,11 @@ export type CourtStatus = (typeof COURT_STATUSES)[number];
 export const GENDER_LABELS = ["open", "men", "women", "mixed"] as const;
 export type GenderLabel = (typeof GENDER_LABELS)[number];
 
+export const GAME_PREFERENCES = ["men", "women", "mixed"] as const;
+export type GamePreference = (typeof GAME_PREFERENCES)[number];
+
+export const MAX_HOME_CLUBS = 15;
+
 export const HOUR = 60 * 60 * 1000;
 export const LEVEL_FLEX = 1;
 export const RELIABILITY_MIN_GAMES = 3;
