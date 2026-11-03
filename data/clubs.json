@@ -1,0 +1,2022 @@
+[
+  {
+    "slug": "africa-padel-dunkeld",
+    "name": "Africa Padel Dunkeld",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Dunkeld",
+    "court_count": 5,
+    "lat": -26.1397637,
+    "lng": 28.04188577
+  },
+  {
+    "slug": "africa-padel-german-country-club",
+    "name": "Africa Padel German Country Club",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Sandton",
+    "court_count": 4,
+    "lat": -26.0299215,
+    "lng": 28.0392049
+  },
+  {
+    "slug": "africa-padel-glenvista",
+    "name": "Africa Padel Glenvista",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Glenvista",
+    "court_count": 4,
+    "lat": -26.2827778,
+    "lng": 28.0547222
+  },
+  {
+    "slug": "africa-padel-old-park",
+    "name": "Africa Padel Old Park",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Johannesburg",
+    "court_count": 4,
+    "lat": -26.205,
+    "lng": 28.049722
+  },
+  {
+    "slug": "africa-padel-royal-johannesburg",
+    "name": "Africa Padel Royal Johannesburg",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Johannesburg",
+    "court_count": 3,
+    "lat": -26.205,
+    "lng": 28.049722
+  },
+  {
+    "slug": "africa-padel-ruimsig",
+    "name": "Africa Padel Ruimsig",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Ruimsig",
+    "court_count": 4,
+    "lat": -26.07272958,
+    "lng": 27.88777673
+  },
+  {
+    "slug": "africa-padel-sandton",
+    "name": "Africa Padel Sandton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Sandton",
+    "court_count": 6,
+    "lat": -26.1045525,
+    "lng": 28.0545147
+  },
+  {
+    "slug": "africa-padel-three-rivers",
+    "name": "Africa Padel Three Rivers",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Three Rivers",
+    "court_count": 4,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "club-padel-morningside",
+    "name": "Club Padel Morningside",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Morningside",
+    "court_count": 5,
+    "lat": -26.0780556,
+    "lng": 28.0644444
+  },
+  {
+    "slug": "clubpadel-pirates",
+    "name": "ClubPadel Pirates",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Greenside",
+    "court_count": 5,
+    "lat": -26.1547222,
+    "lng": 28.0127778
+  },
+  {
+    "slug": "crystal-padel-randburg",
+    "name": "Crystal Padel Randburg",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Randburg",
+    "court_count": 3,
+    "lat": -26.0913588,
+    "lng": 28.002109
+  },
+  {
+    "slug": "epic-padel-huddle-park",
+    "name": "Epic Padel Huddle Park",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Linksfield",
+    "court_count": 4,
+    "lat": -26.1636111,
+    "lng": 28.1011111
+  },
+  {
+    "slug": "indoor-padel-revolution",
+    "name": "Indoor Padel Revolution",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Honeydew",
+    "court_count": 7,
+    "lat": -26.0788389,
+    "lng": 27.9253018
+  },
+  {
+    "slug": "jogo-padel-honeydew",
+    "name": "Jogo Padel Honeydew",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Honeydew",
+    "court_count": 4,
+    "lat": -26.07524154,
+    "lng": 27.92023568
+  },
+  {
+    "slug": "johannesburg-country-club",
+    "name": "Johannesburg Country Club",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Auckland Park",
+    "court_count": 3,
+    "lat": -26.1853203,
+    "lng": 27.9971831
+  },
+  {
+    "slug": "jozi-padel-sandton",
+    "name": "Jozi Padel Sandton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Sandton",
+    "court_count": 4,
+    "lat": -26.1045525,
+    "lng": 28.0545147
+  },
+  {
+    "slug": "liv-padel-supersport-park",
+    "name": "Liv Padel Supersport Park",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Midrand",
+    "court_count": 2,
+    "lat": -25.999262,
+    "lng": 28.125912
+  },
+  {
+    "slug": "marks-park-padel",
+    "name": "Marks Park Padel",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Randburg",
+    "court_count": 4,
+    "lat": -26.0913588,
+    "lng": 28.002109
+  },
+  {
+    "slug": "match-padel-fourways",
+    "name": "Match Padel Fourways",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Fourways",
+    "court_count": 8,
+    "lat": -26.004472,
+    "lng": 28.0042447
+  },
+  {
+    "slug": "moove-fitness-padel",
+    "name": "Moove Fitness Padel",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Alexandra",
+    "court_count": 1,
+    "lat": -26.104444,
+    "lng": 28.098889
+  },
+  {
+    "slug": "n12-padel-boksburg",
+    "name": "N12 Padel Boksburg",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Boksburg",
+    "court_count": 3,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "net-set-padel-sandton-city",
+    "name": "Net Set Padel Sandton City",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Sandton",
+    "court_count": 8,
+    "lat": -26.10911968,
+    "lng": 28.05274897
+  },
+  {
+    "slug": "net-set-padel-sandton-city-rooftop",
+    "name": "Net Set Padel Sandton City Rooftop",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Sandton",
+    "court_count": 2,
+    "lat": -26.10911968,
+    "lng": 28.05274897
+  },
+  {
+    "slug": "padel-co-rietvlei",
+    "name": "Padel & Co Rietvlei",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Alberton",
+    "court_count": 6,
+    "lat": -26.31237494,
+    "lng": 28.08167635
+  },
+  {
+    "slug": "padel-365-greenstone",
+    "name": "Padel 365 Greenstone",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Greenstone",
+    "court_count": 4,
+    "lat": -26.12112,
+    "lng": 28.1415
+  },
+  {
+    "slug": "padel-active-boksburg",
+    "name": "Padel Active Boksburg",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Boksburg",
+    "court_count": 3,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "padel-clear-water-crossing",
+    "name": "Padel Clear Water Crossing",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Roodepoort",
+    "court_count": 2,
+    "lat": -26.1574741,
+    "lng": 27.9280649
+  },
+  {
+    "slug": "padel-farm-ruimsig",
+    "name": "Padel Farm Ruimsig",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Ruimsig",
+    "court_count": 2,
+    "lat": -26.0909169,
+    "lng": 27.8719328
+  },
+  {
+    "slug": "padel-lab-rivonia-recreation-club",
+    "name": "Padel Lab Rivonia Recreation Club",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Rivonia",
+    "court_count": 2,
+    "lat": -26.0303636,
+    "lng": 28.0575532
+  },
+  {
+    "slug": "padel-lab-ruimsig",
+    "name": "Padel Lab Ruimsig",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Ruimsig",
+    "court_count": 2,
+    "lat": -26.08048261,
+    "lng": 27.86589447
+  },
+  {
+    "slug": "padel-perfect-erand-gardens",
+    "name": "Padel Perfect Erand Gardens",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Midrand",
+    "court_count": 3,
+    "lat": -25.999262,
+    "lng": 28.125912
+  },
+  {
+    "slug": "padel-plus-benoni-country-club",
+    "name": "Padel Plus Benoni Country Club",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Benoni",
+    "court_count": 3,
+    "lat": -26.187513,
+    "lng": 28.3165704
+  },
+  {
+    "slug": "padel-quip-old-bens-club",
+    "name": "Padel Quip Old Bens Club",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Benoni",
+    "court_count": 2,
+    "lat": -26.187513,
+    "lng": 28.3165704
+  },
+  {
+    "slug": "padel-resort-waterfall",
+    "name": "Padel Resort Waterfall",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Waterfall",
+    "court_count": null,
+    "lat": -26.1709928,
+    "lng": 28.0729052
+  },
+  {
+    "slug": "padel-vibe-kyalami",
+    "name": "Padel Vibe Kyalami",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Kyalami",
+    "court_count": 4,
+    "lat": -25.9970236,
+    "lng": 28.0678273
+  },
+  {
+    "slug": "padel-xtreme-midrand",
+    "name": "Padel Xtreme Midrand",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Midrand",
+    "court_count": 3,
+    "lat": -25.999262,
+    "lng": 28.125912
+  },
+  {
+    "slug": "padel-and-social-club-gray-park",
+    "name": "Padel and Social Club Gray Park",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Melrose",
+    "court_count": null,
+    "lat": -26.2084985,
+    "lng": 28.0495049
+  },
+  {
+    "slug": "padel-and-social-club-melrose",
+    "name": "Padel and Social Club Melrose",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Melrose",
+    "court_count": null,
+    "lat": -26.2084985,
+    "lng": 28.0495049
+  },
+  {
+    "slug": "propadel-craighall",
+    "name": "ProPadel Craighall",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Craighall",
+    "court_count": 5,
+    "lat": -26.12103518,
+    "lng": 28.02681627
+  },
+  {
+    "slug": "propadel-greek-club",
+    "name": "ProPadel Greek Club",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Germiston",
+    "court_count": 6,
+    "lat": -26.2213637,
+    "lng": 28.1164288
+  },
+  {
+    "slug": "qurtuba-padel-tennis",
+    "name": "Qurtuba Padel Tennis",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Sandton",
+    "court_count": 2,
+    "lat": -26.1045525,
+    "lng": 28.0545147
+  },
+  {
+    "slug": "rbclub-melrose-arch",
+    "name": "RBClub Melrose Arch",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Melrose Arch",
+    "court_count": 8,
+    "lat": -26.1317322,
+    "lng": 28.0674264
+  },
+  {
+    "slug": "ridgepark-sports-club",
+    "name": "Ridgepark Sports Club",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Turfontein",
+    "court_count": 2,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "rivonia-padel",
+    "name": "Rivonia Padel",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Sandton",
+    "court_count": 1,
+    "lat": -26.075257,
+    "lng": 28.068297
+  },
+  {
+    "slug": "steyn-city-padel",
+    "name": "Steyn City Padel",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Sandton",
+    "court_count": 2,
+    "lat": -25.97106436,
+    "lng": 28.00956129
+  },
+  {
+    "slug": "ten-by-twenty-killarney",
+    "name": "Ten By Twenty Killarney",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Killarney",
+    "court_count": 7,
+    "lat": -26.166751,
+    "lng": 28.0504636
+  },
+  {
+    "slug": "ten-by-twenty-lenasia",
+    "name": "Ten By Twenty Lenasia",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Lenasia",
+    "court_count": 4,
+    "lat": -26.3194831,
+    "lng": 27.8246367
+  },
+  {
+    "slug": "thaba-sports-centre-mulbarton",
+    "name": "Thaba Sports Centre Mulbarton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Mulbarton",
+    "court_count": 2,
+    "lat": -26.2933333,
+    "lng": 28.0580556
+  },
+  {
+    "slug": "the-emerald-sky-padel",
+    "name": "The Emerald Sky Padel",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Sandton",
+    "court_count": 1,
+    "lat": -26.1045525,
+    "lng": 28.0545147
+  },
+  {
+    "slug": "the-padel-bar-and-cafe-glendower",
+    "name": "The Padel Bar and Cafe @ Glendower",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Glendower",
+    "court_count": 4,
+    "lat": -26.16060117,
+    "lng": 28.14186709
+  },
+  {
+    "slug": "the-wanderers-club",
+    "name": "The Wanderers Club",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Illovo",
+    "court_count": 6,
+    "lat": -26.13572,
+    "lng": 28.0532
+  },
+  {
+    "slug": "top-padel-alberton",
+    "name": "Top Padel Alberton",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Alberton",
+    "court_count": 3,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "virgin-active-padel-bedfordview",
+    "name": "Virgin Active Padel Bedfordview",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Bedfordview",
+    "court_count": 3,
+    "lat": -26.1705058,
+    "lng": 28.1455143
+  },
+  {
+    "slug": "virgin-active-padel-huddle-park",
+    "name": "Virgin Active Padel Huddle Park",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Linksfield",
+    "court_count": 4,
+    "lat": -26.1555,
+    "lng": 28.11922
+  },
+  {
+    "slug": "virgin-active-padel-old-eds",
+    "name": "Virgin Active Padel Old Eds",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Linksfield",
+    "court_count": 4,
+    "lat": -26.15805,
+    "lng": 28.06227
+  },
+  {
+    "slug": "ijump-clearwater-mall",
+    "name": "iJump Clearwater Mall",
+    "city": "Johannesburg",
+    "province": "Gauteng",
+    "area": "Roodepoort",
+    "court_count": null,
+    "lat": -26.1574741,
+    "lng": 27.9280649
+  },
+  {
+    "slug": "action-padel-century-city",
+    "name": "Action Padel Century City",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Century City",
+    "court_count": 2,
+    "lat": -33.8944876,
+    "lng": 18.5132954
+  },
+  {
+    "slug": "action-padel-diep-river",
+    "name": "Action Padel Diep River",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Diep River",
+    "court_count": null,
+    "lat": -34.0359793,
+    "lng": 18.4675126
+  },
+  {
+    "slug": "action-padel-edgemead",
+    "name": "Action Padel Edgemead",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Edgemead",
+    "court_count": null,
+    "lat": -33.8755672,
+    "lng": 18.5399526
+  },
+  {
+    "slug": "africa-padel-camps-bay",
+    "name": "Africa Padel Camps Bay",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Camps Bay",
+    "court_count": 5,
+    "lat": -33.952447,
+    "lng": 18.377529
+  },
+  {
+    "slug": "africa-padel-claremont",
+    "name": "Africa Padel Claremont",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Claremont",
+    "court_count": 9,
+    "lat": -33.98519607,
+    "lng": 18.46318614
+  },
+  {
+    "slug": "africa-padel-v-a",
+    "name": "Africa Padel V&A",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "V&A Waterfront",
+    "court_count": 5,
+    "lat": -33.9060023,
+    "lng": 18.4195264
+  },
+  {
+    "slug": "arturf-padel-arena",
+    "name": "Arturf Padel Arena",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Cape Town",
+    "court_count": 6,
+    "lat": -33.9806747,
+    "lng": 18.47136645
+  },
+  {
+    "slug": "atlantic-padel-sunningdale",
+    "name": "Atlantic Padel Sunningdale",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Sunningdale",
+    "court_count": 4,
+    "lat": -33.78654932,
+    "lng": 18.49623738
+  },
+  {
+    "slug": "atlantic-padel-table-view",
+    "name": "Atlantic Padel Table View",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Table View",
+    "court_count": 2,
+    "lat": -33.82880507,
+    "lng": 18.48830413
+  },
+  {
+    "slug": "aura-padel-club",
+    "name": "Aura Padel Club",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Cape Town",
+    "court_count": 5,
+    "lat": -33.8593799,
+    "lng": 18.5136678
+  },
+  {
+    "slug": "bay-padel-tokai",
+    "name": "Bay Padel Tokai",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Tokai",
+    "court_count": 6,
+    "lat": -34.073686,
+    "lng": 18.457954
+  },
+  {
+    "slug": "camps-bay-retreat-padel",
+    "name": "Camps Bay Retreat Padel",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Camps Bay",
+    "court_count": 1,
+    "lat": -33.9463898,
+    "lng": 18.3803023
+  },
+  {
+    "slug": "eden-padel",
+    "name": "Eden Padel",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Durbanville",
+    "court_count": 4,
+    "lat": -33.8234976,
+    "lng": 18.5675884
+  },
+  {
+    "slug": "epicentre-padel",
+    "name": "Epicentre Padel",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Cape Town",
+    "court_count": 5,
+    "lat": -33.9288301,
+    "lng": 18.4172197
+  },
+  {
+    "slug": "glen-virgin-active-padel-club",
+    "name": "Glen Virgin Active Padel Club",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Clifton",
+    "court_count": 1,
+    "lat": -33.942824,
+    "lng": 18.3744744
+  },
+  {
+    "slug": "kelvin-grove-newlands",
+    "name": "Kelvin Grove Newlands",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Newlands",
+    "court_count": 3,
+    "lat": -33.9742832,
+    "lng": 18.4572951
+  },
+  {
+    "slug": "lekka-padel-milnerton",
+    "name": "Lekka Padel Milnerton",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Milnerton",
+    "court_count": 2,
+    "lat": -33.88506089,
+    "lng": 18.49297661
+  },
+  {
+    "slug": "mount-nelson-hotel-padel",
+    "name": "Mount Nelson Hotel Padel",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Gardens",
+    "court_count": 1,
+    "lat": -33.9327778,
+    "lng": 18.4097222
+  },
+  {
+    "slug": "net-set-camps-bay-retreat",
+    "name": "Net Set Camps Bay Retreat",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Camps Bay",
+    "court_count": 1,
+    "lat": -33.9463898,
+    "lng": 18.3803023
+  },
+  {
+    "slug": "padel-365-noordhoek-emporium",
+    "name": "Padel 365 Noordhoek Emporium",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Noordhoek",
+    "court_count": 4,
+    "lat": -34.1168521,
+    "lng": 18.3878978
+  },
+  {
+    "slug": "padel-365-richmond-park",
+    "name": "Padel 365 Richmond Park",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Montague Gardens",
+    "court_count": 5,
+    "lat": -33.84033023,
+    "lng": 18.53844082
+  },
+  {
+    "slug": "padel-century-city-slipstream",
+    "name": "Padel Century City Slipstream",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Century City",
+    "court_count": null,
+    "lat": -33.8890503,
+    "lng": 18.5119603
+  },
+  {
+    "slug": "padel-lansdowne",
+    "name": "Padel Lansdowne",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Lansdowne",
+    "court_count": null,
+    "lat": -33.9963409,
+    "lng": 18.5068931
+  },
+  {
+    "slug": "padel-life-old-mutual-sports-club",
+    "name": "Padel Life Old Mutual Sports Club",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Pinelands",
+    "court_count": 6,
+    "lat": -33.9316667,
+    "lng": 18.5127778
+  },
+  {
+    "slug": "padel-milnerton-richmond",
+    "name": "Padel Milnerton Richmond",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Milnerton",
+    "court_count": null,
+    "lat": -33.869866,
+    "lng": 18.4973429
+  },
+  {
+    "slug": "padel-ottery",
+    "name": "Padel Ottery",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Ottery",
+    "court_count": null,
+    "lat": -34.0131526,
+    "lng": 18.5091531
+  },
+  {
+    "slug": "padel-rondebosch",
+    "name": "Padel Rondebosch",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Rondebosch",
+    "court_count": null,
+    "lat": -33.9680556,
+    "lng": 18.4877778
+  },
+  {
+    "slug": "padel-turfhall",
+    "name": "Padel Turfhall",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Turfhall",
+    "court_count": null,
+    "lat": -33.9873643,
+    "lng": 18.513795
+  },
+  {
+    "slug": "padel-5-hout-bay",
+    "name": "Padel@5 Hout Bay",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Hout Bay",
+    "court_count": 1,
+    "lat": -34.0119329,
+    "lng": 18.4051116
+  },
+  {
+    "slug": "point-padel-club",
+    "name": "Point Padel Club",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Point",
+    "court_count": 4,
+    "lat": -34.2532491,
+    "lng": 18.4522507
+  },
+  {
+    "slug": "rb-club-cape-town-indoor",
+    "name": "RB Club Cape Town (Indoor)",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Cape Town CBD",
+    "court_count": 4,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "racket-ball-club-bree-street",
+    "name": "Racket+Ball Club Bree Street",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Bree Street",
+    "court_count": 4,
+    "lat": -33.92709911,
+    "lng": 18.41164105
+  },
+  {
+    "slug": "stadium-on-main-padel",
+    "name": "Stadium on Main Padel",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Claremont",
+    "court_count": null,
+    "lat": -33.9847222,
+    "lng": 18.4625
+  },
+  {
+    "slug": "virgin-active-padel-paarden-eiland",
+    "name": "Virgin Active Padel Paarden Eiland",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Paarden Eiland",
+    "court_count": 5,
+    "lat": -33.9140465,
+    "lng": 18.4711933
+  },
+  {
+    "slug": "virgin-active-padel-pinehurst",
+    "name": "Virgin Active Padel Pinehurst",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Durbanville",
+    "court_count": 3,
+    "lat": -33.8234976,
+    "lng": 18.5675884
+  },
+  {
+    "slug": "volea-padel-kommetjie",
+    "name": "Volea Padel Kommetjie",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Kommetjie",
+    "court_count": 2,
+    "lat": -34.1398647,
+    "lng": 18.3269939
+  },
+  {
+    "slug": "welgemoed-padel",
+    "name": "Welgemoed Padel",
+    "city": "Cape Town",
+    "province": "Western Cape",
+    "area": "Welgemoed",
+    "court_count": 1,
+    "lat": -33.8722064,
+    "lng": 18.6173075
+  },
+  {
+    "slug": "africa-padel-brooklyn",
+    "name": "Africa Padel Brooklyn",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Brooklyn",
+    "court_count": 4,
+    "lat": -25.774302,
+    "lng": 28.226715
+  },
+  {
+    "slug": "africa-padel-olympus",
+    "name": "Africa Padel Olympus",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Olympus",
+    "court_count": 5,
+    "lat": -25.8090137,
+    "lng": 28.348847
+  },
+  {
+    "slug": "ballers-padel-arena",
+    "name": "Ballers Padel Arena",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Mountain Lake",
+    "court_count": 2,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "balwin-padel-thaba",
+    "name": "Balwin Padel Thaba",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Centurion",
+    "court_count": 6,
+    "lat": -26.30048,
+    "lng": 28.04793
+  },
+  {
+    "slug": "centre-court-padel-lynnwood",
+    "name": "Centre Court Padel Lynnwood",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Lynnwood Glen",
+    "court_count": 1,
+    "lat": -25.7727778,
+    "lng": 28.2794444
+  },
+  {
+    "slug": "dpt-padel-rietvalleirand",
+    "name": "DPT Padel Rietvalleirand",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Rietvalleirand",
+    "court_count": 1,
+    "lat": -25.8204264,
+    "lng": 28.2571347
+  },
+  {
+    "slug": "gayle-padel-club",
+    "name": "Gayle Padel Club",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Raslouw",
+    "court_count": null,
+    "lat": -25.8528948,
+    "lng": 28.1186786
+  },
+  {
+    "slug": "hartbeespoort-padel-brits",
+    "name": "Hartbeespoort Padel Brits",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Hartbeespoort",
+    "court_count": 2,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "padel-lab-clubview",
+    "name": "Padel Lab Clubview",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Clubview",
+    "court_count": 2,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "padel-lab-elardus-park",
+    "name": "Padel Lab Elardus Park",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Elardus Park",
+    "court_count": 2,
+    "lat": -25.8261778,
+    "lng": 28.2607521
+  },
+  {
+    "slug": "padel-park-pretoria",
+    "name": "Padel Park Pretoria",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Pretoria",
+    "court_count": 2,
+    "lat": -25.7459277,
+    "lng": 28.1879101
+  },
+  {
+    "slug": "padel-play-hartbeespoort",
+    "name": "Padel Play Hartbeespoort",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Hartbeespoort",
+    "court_count": 1,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "play-360-rosemary-hill",
+    "name": "Play 360 Rosemary Hill",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Centurion",
+    "court_count": 2,
+    "lat": -25.79100373,
+    "lng": 28.43244922
+  },
+  {
+    "slug": "rietondale-padel",
+    "name": "Rietondale Padel",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Rietondale",
+    "court_count": 4,
+    "lat": -25.7332356,
+    "lng": 28.22500891
+  },
+  {
+    "slug": "roshnee-padel",
+    "name": "Roshnee Padel",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Roshnee",
+    "court_count": 4,
+    "lat": -26.55855,
+    "lng": 27.94351
+  },
+  {
+    "slug": "team-padel-pretoria",
+    "name": "Team Padel Pretoria",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Pretoria",
+    "court_count": 4,
+    "lat": -25.7459277,
+    "lng": 28.1879101
+  },
+  {
+    "slug": "the-range-padel-erasmia",
+    "name": "The Range Padel Erasmia",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Erasmia",
+    "court_count": 2,
+    "lat": -25.8189633,
+    "lng": 28.087152
+  },
+  {
+    "slug": "thrashers-padel-menlyn",
+    "name": "Thrashers Padel Menlyn",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Menlyn",
+    "court_count": 5,
+    "lat": -25.78911072,
+    "lng": 28.28470045
+  },
+  {
+    "slug": "u-pro-action-sports-faerieglen",
+    "name": "U-Pro Action Sports Faerieglen",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Faerieglen",
+    "court_count": 3,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "u-pro-padel-atterbury-value-mart",
+    "name": "U-Pro Padel Atterbury Value Mart",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Atterbury",
+    "court_count": 4,
+    "lat": -25.78742053,
+    "lng": 28.30578339
+  },
+  {
+    "slug": "virgin-active-padel-groenkloof",
+    "name": "Virgin Active Padel Groenkloof",
+    "city": "Pretoria",
+    "province": "Gauteng",
+    "area": "Groenkloof",
+    "court_count": 5,
+    "lat": -25.7697416,
+    "lng": 28.2150737
+  },
+  {
+    "slug": "africa-padel-kloof",
+    "name": "Africa Padel Kloof",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Kloof",
+    "court_count": 4,
+    "lat": -29.79689934,
+    "lng": 30.82434584
+  },
+  {
+    "slug": "africa-padel-la-lucia",
+    "name": "Africa Padel La Lucia",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "La Lucia",
+    "court_count": 4,
+    "lat": -29.7537979,
+    "lng": 31.0645051
+  },
+  {
+    "slug": "africa-padel-salt-rock",
+    "name": "Africa Padel Salt Rock",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Salt Rock",
+    "court_count": 3,
+    "lat": -29.50237,
+    "lng": 31.23659
+  },
+  {
+    "slug": "al-falaah-padel",
+    "name": "Al Falaah Padel",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Durban",
+    "court_count": 4,
+    "lat": -29.8200572,
+    "lng": 30.9985322
+  },
+  {
+    "slug": "chiltern-park",
+    "name": "Chiltern Park",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Westville",
+    "court_count": 4,
+    "lat": -29.815892,
+    "lng": 30.923719
+  },
+  {
+    "slug": "dream-padel-mount-edgecombe",
+    "name": "Dream Padel Mount Edgecombe",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Mount Edgecombe",
+    "court_count": 1,
+    "lat": -29.7250569,
+    "lng": 31.0381693
+  },
+  {
+    "slug": "eastbury-padel-phoenix",
+    "name": "Eastbury Padel Phoenix",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Phoenix",
+    "court_count": 2,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "gayle-padel-berea",
+    "name": "Gayle Padel Berea",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Berea",
+    "court_count": 4,
+    "lat": -29.8505556,
+    "lng": 31.0019444
+  },
+  {
+    "slug": "gayle-padel-durban-north",
+    "name": "Gayle Padel Durban North",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Durban North",
+    "court_count": 2,
+    "lat": -29.7859268,
+    "lng": 31.0403152
+  },
+  {
+    "slug": "gayle-padel-hillcrest",
+    "name": "Gayle Padel Hillcrest",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Hillcrest",
+    "court_count": 4,
+    "lat": -29.7895769,
+    "lng": 30.7425152
+  },
+  {
+    "slug": "karibu-padel-dolphin-coast",
+    "name": "Karibu Padel Dolphin Coast",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Dolphin Coast",
+    "court_count": 3,
+    "lat": -29.7868013,
+    "lng": 31.0218683
+  },
+  {
+    "slug": "nex-padel",
+    "name": "Nex Padel",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Berea",
+    "court_count": 2,
+    "lat": -29.8505556,
+    "lng": 31.0019444
+  },
+  {
+    "slug": "padel-ace-westville",
+    "name": "Padel Ace Westville",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Westville",
+    "court_count": 2,
+    "lat": -29.8244444,
+    "lng": 30.9386111
+  },
+  {
+    "slug": "padel-hq-dolphin-coast",
+    "name": "Padel HQ Dolphin Coast",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Dolphin Coast",
+    "court_count": 2,
+    "lat": -29.7868013,
+    "lng": 31.0218683
+  },
+  {
+    "slug": "padel-perfect",
+    "name": "Padel Perfect",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Durban",
+    "court_count": 2,
+    "lat": -29.8618145,
+    "lng": 31.009909
+  },
+  {
+    "slug": "smash-padel-berea",
+    "name": "Smash Padel Berea",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Berea",
+    "court_count": 2,
+    "lat": -29.8505556,
+    "lng": 31.0019444
+  },
+  {
+    "slug": "the-padel-pros-dome",
+    "name": "The Padel Pros Dome",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Dolphin Coast",
+    "court_count": 2,
+    "lat": -29.7868013,
+    "lng": 31.0218683
+  },
+  {
+    "slug": "wipadel-sherwood",
+    "name": "WiPadel Sherwood",
+    "city": "Durban",
+    "province": "KwaZulu-Natal",
+    "area": "Sherwood",
+    "court_count": 4,
+    "lat": -29.834447,
+    "lng": 30.972635
+  },
+  {
+    "slug": "anglowealth-country-club",
+    "name": "Anglowealth Country Club",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "area": "Centurion",
+    "court_count": 4,
+    "lat": -25.836389,
+    "lng": 28.180278
+  },
+  {
+    "slug": "gayle-nexia",
+    "name": "Gayle @ Nexia",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "area": "Centurion",
+    "court_count": 2,
+    "lat": -25.87332109,
+    "lng": 28.18869385
+  },
+  {
+    "slug": "gayle-padel-lenasia",
+    "name": "Gayle Padel Lenasia",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "area": "Lenasia",
+    "court_count": 2,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "padel-al-asr",
+    "name": "Padel @ Al-Asr",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "area": "Centurion",
+    "court_count": 3,
+    "lat": -25.795322,
+    "lng": 28.113683
+  },
+  {
+    "slug": "proactive-padel-irene",
+    "name": "Proactive Padel Irene",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "area": "Doringkloof",
+    "court_count": 4,
+    "lat": -25.853301,
+    "lng": 28.2071228
+  },
+  {
+    "slug": "raslouw-corner-padel-club",
+    "name": "Raslouw Corner Padel Club",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "area": "Raslouw",
+    "court_count": 4,
+    "lat": -25.85600521,
+    "lng": 28.11003362
+  },
+  {
+    "slug": "rooftop-padel-centurion",
+    "name": "Rooftop Padel Centurion",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "area": "Centurion",
+    "court_count": 2,
+    "lat": -25.836389,
+    "lng": 28.180278
+  },
+  {
+    "slug": "top-padel-zwartkop",
+    "name": "Top Padel Zwartkop",
+    "city": "Centurion",
+    "province": "Gauteng",
+    "area": "Zwartkop",
+    "court_count": 4,
+    "lat": -25.8672222,
+    "lng": 28.1763889
+  },
+  {
+    "slug": "new-era-padel",
+    "name": "New Era Padel",
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "area": "Gqeberha",
+    "court_count": 4,
+    "lat": -33.9618598,
+    "lng": 25.6186731
+  },
+  {
+    "slug": "old-grey-padel",
+    "name": "Old Grey Padel",
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "area": "Gqeberha",
+    "court_count": 2,
+    "lat": -33.9564758,
+    "lng": 25.5924393
+  },
+  {
+    "slug": "pitch-n-padel",
+    "name": "Pitch n Padel",
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "area": "Gqeberha",
+    "court_count": 2,
+    "lat": -33.9618598,
+    "lng": 25.6186731
+  },
+  {
+    "slug": "sunridge-action-arena",
+    "name": "Sunridge Action Arena",
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "area": "Sunridge",
+    "court_count": 1,
+    "lat": -33.94716342,
+    "lng": 25.53571162
+  },
+  {
+    "slug": "techno-padel-walmer",
+    "name": "Techno Padel Walmer",
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "area": "Walmer",
+    "court_count": 3,
+    "lat": -33.9738217,
+    "lng": 25.5747695
+  },
+  {
+    "slug": "trend-entertainment-centre",
+    "name": "Trend Entertainment Centre",
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "area": "Gqeberha",
+    "court_count": 2,
+    "lat": -33.94753668,
+    "lng": 25.5147551
+  },
+  {
+    "slug": "virgin-active-padel-lorraine",
+    "name": "Virgin Active Padel Lorraine",
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "area": "Lorraine",
+    "court_count": 2,
+    "lat": -33.96907681,
+    "lng": 25.52697445
+  },
+  {
+    "slug": "walmer-padel",
+    "name": "Walmer Padel",
+    "city": "Gqeberha",
+    "province": "Eastern Cape",
+    "area": "Walmer",
+    "court_count": null,
+    "lat": -33.9783333,
+    "lng": 25.5874001
+  },
+  {
+    "slug": "africa-padel-van-der-stel",
+    "name": "Africa Padel Van Der Stel",
+    "city": "Stellenbosch",
+    "province": "Western Cape",
+    "area": "Stellenbosch",
+    "court_count": 4,
+    "lat": -33.9347209,
+    "lng": 18.857894
+  },
+  {
+    "slug": "club-padel-stellenbosch",
+    "name": "Club Padel Stellenbosch",
+    "city": "Stellenbosch",
+    "province": "Western Cape",
+    "area": "Stellenbosch",
+    "court_count": 5,
+    "lat": -33.9429536,
+    "lng": 18.82818091
+  },
+  {
+    "slug": "de-zalze-golf-estate",
+    "name": "De Zalze Golf Estate",
+    "city": "Stellenbosch",
+    "province": "Western Cape",
+    "area": "Stellenbosch",
+    "court_count": 2,
+    "lat": -33.9753799,
+    "lng": 18.8408679
+  },
+  {
+    "slug": "hazendal-wine-estate-padel",
+    "name": "Hazendal Wine Estate Padel",
+    "city": "Stellenbosch",
+    "province": "Western Cape",
+    "area": "Stellenbosch",
+    "court_count": 1,
+    "lat": -33.934444,
+    "lng": 18.869167
+  },
+  {
+    "slug": "zorgvliet-wines-padel",
+    "name": "Zorgvliet Wines Padel",
+    "city": "Stellenbosch",
+    "province": "Western Cape",
+    "area": "Helshoogte",
+    "court_count": 2,
+    "lat": -33.9222451,
+    "lng": 18.9103532
+  },
+  {
+    "slug": "anchorage-padel-vaal",
+    "name": "Anchorage Padel Vaal",
+    "city": "Vereeniging",
+    "province": "Gauteng",
+    "area": "Vaal",
+    "court_count": 1,
+    "lat": -26.673809,
+    "lng": 27.9388866
+  },
+  {
+    "slug": "emfuleni-padel",
+    "name": "Emfuleni Padel",
+    "city": "Vereeniging",
+    "province": "Gauteng",
+    "area": "Vanderbijlpark",
+    "court_count": 1,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "sebenza-padel-club-vanderbijlpark",
+    "name": "Sebenza Padel Club Vanderbijlpark",
+    "city": "Vereeniging",
+    "province": "Gauteng",
+    "area": "Vanderbijlpark",
+    "court_count": 2,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "ten-by-twenty-three-rivers",
+    "name": "Ten by Twenty Three Rivers",
+    "city": "Vereeniging",
+    "province": "Gauteng",
+    "area": "Three Rivers",
+    "court_count": 2,
+    "lat": null,
+    "lng": null
+  },
+  {
+    "slug": "v-town-padel",
+    "name": "V-Town Padel",
+    "city": "Vereeniging",
+    "province": "Gauteng",
+    "area": "Vanderbijlpark",
+    "court_count": 2,
+    "lat": -26.74409607,
+    "lng": 27.82394287
+  },
+  {
+    "slug": "absolute-padel-plett",
+    "name": "Absolute Padel Plett",
+    "city": "Plettenberg Bay",
+    "province": "Western Cape",
+    "area": "Plettenberg Bay",
+    "court_count": 3,
+    "lat": -34.05509039,
+    "lng": 23.37138537
+  },
+  {
+    "slug": "africa-padel-plettenberg-bay",
+    "name": "Africa Padel Plettenberg Bay",
+    "city": "Plettenberg Bay",
+    "province": "Western Cape",
+    "area": "Plettenberg Bay",
+    "court_count": 2,
+    "lat": -34.01373356,
+    "lng": 23.37394708
+  },
+  {
+    "slug": "forest-gate-padel",
+    "name": "Forest Gate Padel",
+    "city": "Plettenberg Bay",
+    "province": "Western Cape",
+    "area": "Plettenberg Bay",
+    "court_count": null,
+    "lat": -34.0447149,
+    "lng": 23.2859416
+  },
+  {
+    "slug": "padel-365-plett-country-club",
+    "name": "Padel 365 Plett Country Club",
+    "city": "Plettenberg Bay",
+    "province": "Western Cape",
+    "area": "Plettenberg Bay",
+    "court_count": null,
+    "lat": -34.06039001,
+    "lng": 23.35380434
+  },
+  {
+    "slug": "africa-padel-bloemfontein",
+    "name": "Africa Padel Bloemfontein",
+    "city": "Bloemfontein",
+    "province": "Free State",
+    "area": "Bloemfontein",
+    "court_count": 4,
+    "lat": -29.0696616,
+    "lng": 26.2284712
+  },
+  {
+    "slug": "net-set-ramblers-club",
+    "name": "Net Set Ramblers Club",
+    "city": "Bloemfontein",
+    "province": "Free State",
+    "area": "Bloemfontein",
+    "court_count": null,
+    "lat": -29.1106244,
+    "lng": 26.22033713
+  },
+  {
+    "slug": "padel-in-the-woods",
+    "name": "Padel in the Woods",
+    "city": "Bloemfontein",
+    "province": "Free State",
+    "area": "Bloemfontein",
+    "court_count": null,
+    "lat": -29.04516941,
+    "lng": 26.19774302
+  },
+  {
+    "slug": "padelworx",
+    "name": "PadelWorx",
+    "city": "Bloemfontein",
+    "province": "Free State",
+    "area": "Bloemfontein",
+    "court_count": null,
+    "lat": -29.0832922,
+    "lng": 26.1515793
+  },
+  {
+    "slug": "garden-route-padel-george",
+    "name": "Garden Route Padel George",
+    "city": "George",
+    "province": "Western Cape",
+    "area": "Glenwood",
+    "court_count": 2,
+    "lat": -33.97128952,
+    "lng": 22.50521462
+  },
+  {
+    "slug": "lets-play-padel-george",
+    "name": "Lets Play Padel George",
+    "city": "George",
+    "province": "Western Cape",
+    "area": "George",
+    "court_count": 3,
+    "lat": -33.9597212,
+    "lng": 22.4587148
+  },
+  {
+    "slug": "telesto-tennis-academy",
+    "name": "Telesto Tennis Academy",
+    "city": "George",
+    "province": "Western Cape",
+    "area": "George",
+    "court_count": 2,
+    "lat": -33.9597212,
+    "lng": 22.4587148
+  },
+  {
+    "slug": "next-padel-pietermaritzburg",
+    "name": "Next Padel Pietermaritzburg",
+    "city": "Pietermaritzburg",
+    "province": "KwaZulu-Natal",
+    "area": "Pietermaritzburg",
+    "court_count": 1,
+    "lat": -29.6,
+    "lng": 30.3788889
+  },
+  {
+    "slug": "padel-power-pietermaritzburg",
+    "name": "Padel Power Pietermaritzburg",
+    "city": "Pietermaritzburg",
+    "province": "KwaZulu-Natal",
+    "area": "Pietermaritzburg",
+    "court_count": 3,
+    "lat": -29.6,
+    "lng": 30.3788889
+  },
+  {
+    "slug": "padelpmb",
+    "name": "PadelPMB",
+    "city": "Pietermaritzburg",
+    "province": "KwaZulu-Natal",
+    "area": "Pietermaritzburg",
+    "court_count": 3,
+    "lat": -29.6,
+    "lng": 30.3788889
+  },
+  {
+    "slug": "padel-ace-paarl",
+    "name": "Padel Ace Paarl",
+    "city": "Paarl",
+    "province": "Western Cape",
+    "area": "Paarl",
+    "court_count": 2,
+    "lat": -33.73533,
+    "lng": 18.96679
+  },
+  {
+    "slug": "val-de-vie-padel",
+    "name": "Val de Vie Padel",
+    "city": "Paarl",
+    "province": "Western Cape",
+    "area": "Val de Vie",
+    "court_count": null,
+    "lat": -33.8013479,
+    "lng": 18.9703572
+  },
+  {
+    "slug": "padelx-somerset-west",
+    "name": "PadelX Somerset West",
+    "city": "Somerset West",
+    "province": "Western Cape",
+    "area": "Somerset West",
+    "court_count": null,
+    "lat": -34.0775442,
+    "lng": 18.8234695
+  },
+  {
+    "slug": "virgin-active-padel-lourensford",
+    "name": "Virgin Active Padel Lourensford",
+    "city": "Somerset West",
+    "province": "Western Cape",
+    "area": "Lourensford",
+    "court_count": 2,
+    "lat": -34.0693301,
+    "lng": 18.89283767
+  },
+  {
+    "slug": "livpadel-knysna",
+    "name": "LivPadel Knysna",
+    "city": "Knysna",
+    "province": "Western Cape",
+    "area": "Knysna",
+    "court_count": 2,
+    "lat": -34.03558167,
+    "lng": 23.01706909
+  },
+  {
+    "slug": "simola-padel",
+    "name": "Simola Padel",
+    "city": "Knysna",
+    "province": "Western Cape",
+    "area": "Knysna",
+    "court_count": 2,
+    "lat": -34.00620129,
+    "lng": 23.03319435
+  },
+  {
+    "slug": "beacon-bay-padel",
+    "name": "Beacon Bay Padel",
+    "city": "East London",
+    "province": "Eastern Cape",
+    "area": "Beacon Bay",
+    "court_count": 4,
+    "lat": -32.9694444,
+    "lng": 27.9447222
+  },
+  {
+    "slug": "padel-park-east-london",
+    "name": "Padel Park East London",
+    "city": "East London",
+    "province": "Eastern Cape",
+    "area": "East London",
+    "court_count": 2,
+    "lat": -33.0191604,
+    "lng": 27.8998573
+  },
+  {
+    "slug": "padel-nation-umhlanga",
+    "name": "Padel Nation Umhlanga",
+    "city": "Umhlanga",
+    "province": "KwaZulu-Natal",
+    "area": "Umhlanga",
+    "court_count": 3,
+    "lat": -31.4642677,
+    "lng": 27.2136813
+  },
+  {
+    "slug": "virgin-active-padel-gateway",
+    "name": "Virgin Active Padel Gateway",
+    "city": "Umhlanga",
+    "province": "KwaZulu-Natal",
+    "area": "Gateway",
+    "court_count": 6,
+    "lat": -29.731311,
+    "lng": 31.0675999
+  },
+  {
+    "slug": "padel-24-mbombela",
+    "name": "Padel 24 Mbombela",
+    "city": "Mbombela",
+    "province": "Mpumalanga",
+    "area": "Mbombela",
+    "court_count": 3,
+    "lat": -25.4729094,
+    "lng": 30.9772719
+  },
+  {
+    "slug": "play-360",
+    "name": "Play 360",
+    "city": "Mbombela",
+    "province": "Mpumalanga",
+    "area": "Mbombela",
+    "court_count": null,
+    "lat": -25.48778746,
+    "lng": 30.9368474
+  },
+  {
+    "slug": "534-padel",
+    "name": "534 Padel",
+    "city": "Polokwane",
+    "province": "Limpopo",
+    "area": "Polokwane",
+    "court_count": null,
+    "lat": -23.9058333,
+    "lng": 29.4613889
+  },
+  {
+    "slug": "n1-padel-polokwane",
+    "name": "N1 Padel Polokwane",
+    "city": "Polokwane",
+    "province": "Limpopo",
+    "area": "Polokwane",
+    "court_count": 2,
+    "lat": -23.9058333,
+    "lng": 29.4613889
+  },
+  {
+    "slug": "mossel-bay-padel",
+    "name": "Mossel Bay Padel",
+    "city": "Mossel Bay",
+    "province": "Western Cape",
+    "area": "Mossel Bay",
+    "court_count": 2,
+    "lat": -34.1127933,
+    "lng": 22.1051079
+  },
+  {
+    "slug": "point-padel-mossel-bay",
+    "name": "Point Padel Mossel Bay",
+    "city": "Mossel Bay",
+    "province": "Western Cape",
+    "area": "Mossel Bay",
+    "court_count": 2,
+    "lat": -34.1851836,
+    "lng": 22.1593191
+  },
+  {
+    "slug": "africa-padel-ballito",
+    "name": "Africa Padel Ballito",
+    "city": "Ballito",
+    "province": "KwaZulu-Natal",
+    "area": "Ballito",
+    "court_count": 3,
+    "lat": -29.5290784,
+    "lng": 31.1970403
+  },
+  {
+    "slug": "padel-101",
+    "name": "Padel 101",
+    "city": "Standerton",
+    "province": "Mpumalanga",
+    "area": "Standerton",
+    "court_count": null,
+    "lat": -26.9433333,
+    "lng": 29.2436111
+  },
+  {
+    "slug": "net-set-white-river",
+    "name": "Net Set White River",
+    "city": "White River",
+    "province": "Mpumalanga",
+    "area": "White River",
+    "court_count": 2,
+    "lat": -25.326389,
+    "lng": 31.014444
+  },
+  {
+    "slug": "padel-t-rustenburg",
+    "name": "Padel T Rustenburg",
+    "city": "Rustenburg",
+    "province": "North West",
+    "area": "Rustenburg",
+    "court_count": null,
+    "lat": -25.665655,
+    "lng": 27.241448
+  },
+  {
+    "slug": "techno-padel-potchefstroom",
+    "name": "Techno Padel Potchefstroom",
+    "city": "Potchefstroom",
+    "province": "North West",
+    "area": "Potchefstroom",
+    "court_count": null,
+    "lat": -26.707778,
+    "lng": 27.095833
+  },
+  {
+    "slug": "play-padel-hermanus-sports-club",
+    "name": "Play Padel Hermanus Sports Club",
+    "city": "Hermanus",
+    "province": "Western Cape",
+    "area": "Hermanus",
+    "court_count": 4,
+    "lat": -34.4097282,
+    "lng": 19.2428025
+  },
+  {
+    "slug": "station-padel-sugar-village",
+    "name": "Station Padel Sugar Village",
+    "city": "Umhlali",
+    "province": "KwaZulu-Natal",
+    "area": "Umhlali",
+    "court_count": 2,
+    "lat": -29.4773106,
+    "lng": 31.2181265
+  },
+  {
+    "slug": "net-set-padel-nottingham-road",
+    "name": "Net Set Padel Nottingham Road",
+    "city": "Nottingham Road",
+    "province": "KwaZulu-Natal",
+    "area": "Nottingham Road",
+    "court_count": 3,
+    "lat": -29.3558456,
+    "lng": 29.9941198
+  },
+  {
+    "slug": "velocity-gym-padel-hilton",
+    "name": "Velocity Gym Padel Hilton",
+    "city": "Hilton",
+    "province": "KwaZulu-Natal",
+    "area": "Hilton",
+    "court_count": 1,
+    "lat": -29.5522222,
+    "lng": 30.3016667
+  },
+  {
+    "slug": "south-coast-padel-margate",
+    "name": "South Coast Padel Margate",
+    "city": "Margate",
+    "province": "KwaZulu-Natal",
+    "area": "Margate",
+    "court_count": 2,
+    "lat": -30.864167,
+    "lng": 30.368611
+  },
+  {
+    "slug": "sheppie-padel-club",
+    "name": "Sheppie Padel Club",
+    "city": "Port Shepstone",
+    "province": "KwaZulu-Natal",
+    "area": "Port Shepstone",
+    "court_count": 2,
+    "lat": -30.742778,
+    "lng": 30.450556
+  },
+  {
+    "slug": "umdoni-point-sports-leisure",
+    "name": "Umdoni Point Sports & Leisure",
+    "city": "Pennington",
+    "province": "KwaZulu-Natal",
+    "area": "Pennington",
+    "court_count": 4,
+    "lat": -30.3847723,
+    "lng": 30.68237915
+  },
+  {
+    "slug": "the-racket-club-cotswold-downs",
+    "name": "The Racket Club Cotswold Downs",
+    "city": "Hillcrest",
+    "province": "KwaZulu-Natal",
+    "area": "Hillcrest",
+    "court_count": 2,
+    "lat": -29.75297917,
+    "lng": 30.79000731
+  },
+  {
+    "slug": "mogol-club",
+    "name": "Mogol Club",
+    "city": "Lephalale",
+    "province": "Limpopo",
+    "area": "Lephalale · WhatsApp / phone booking",
+    "court_count": null,
+    "lat": null,
+    "lng": null
+  }
+]
