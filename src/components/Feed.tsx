@@ -119,7 +119,7 @@ export function Feed() {
   const [placeMode, setPlaceMode] = useState<"gps" | "city">("gps");
   const city = placeMode === "city" ? cityOverride ?? storedCity : null;
   const [radius, setRadius] = useState<number | null>(25);
-  const [clubId, setClubId] = useState<string | null>(null);
+  const [clubIds, setClubIds] = useState<string[]>([]);
   const [when, setWhen] = useState<WhenFilter>("any");
   const [court, setCourt] = useState<CourtFilter>("any");
   const [mode, setMode] = useState<ModeFilter>("any");
@@ -228,7 +228,7 @@ export function Feed() {
       .filter(({ game, near }) => {
         if (!showFull && spotsLeft(game) === 0) return false;
         if (city && !game.clubs.some((club) => club.city === city)) return false;
-        if (clubId && !game.clubs.some((club) => club.id === clubId)) return false;
+        if (clubIds.length > 0 && !game.clubs.some((club) => clubIds.includes(club.id))) return false;
         if (court === "booked" && !game.court_booked) return false;
         if (court === "needed" && game.court_booked) return false;
         if (mode !== "any" && game.join_mode !== mode) return false;
@@ -237,7 +237,7 @@ export function Feed() {
         const ends = new Date(game.ends_at);
         if (!matchesWhen(starts, when, now)) return false;
         if (!matchesTime(starts, ends, time)) return false;
-        if (!clubId && placeMode === "gps" && coords && radius != null) {
+        if (clubIds.length === 0 && placeMode === "gps" && coords && radius != null) {
           if (near.distance == null || near.distance > radius) return false;
         }
         if (placeMode === "gps" && !coords) return false;
@@ -250,7 +250,7 @@ export function Feed() {
         }
         return new Date(a.game.starts_at).getTime() - new Date(b.game.starts_at).getTime();
       });
-  }, [games, coords, city, radius, clubId, court, mode, skill, time, when, showFull, placeMode]);
+  }, [games, coords, city, radius, clubIds, court, mode, skill, time, when, showFull, placeMode]);
 
   const clubChoices = useMemo(() => {
     const needle = clubQuery.trim().toLowerCase();
@@ -275,16 +275,12 @@ export function Feed() {
       });
   }, [clubs, clubQuery, city, placeMode, coords]);
 
-  const selectedClub = clubs.find((club) => club.id === clubId) ?? null;
   const clubRows = useMemo(() => {
-    const rows = clubChoices.slice(0, 40);
-    if (!selectedClub || rows.some((row) => row.club.id === selectedClub.id)) return rows;
-    const distance =
-      coords && selectedClub.lat != null && selectedClub.lng != null
-        ? haversineKm(coords, { lat: selectedClub.lat, lng: selectedClub.lng })
-        : null;
-    return [{ club: selectedClub, distance }, ...rows];
-  }, [clubChoices, selectedClub, coords]);
+    const selected = new Set(clubIds);
+    const picked = clubChoices.filter((row) => selected.has(row.club.id));
+    const rest = clubChoices.filter((row) => !selected.has(row.club.id));
+    return [...picked, ...(clubQuery.trim() ? rest : rest.slice(0, 40))];
+  }, [clubChoices, clubIds, clubQuery]);
 
   const dayChips: DayChoice[] =
     days.length > 0
@@ -300,7 +296,7 @@ export function Feed() {
     (court !== "any" ? 1 : 0) +
     (mode !== "any" ? 1 : 0) +
     (skill !== "any" ? 1 : 0) +
-    (clubId ? 1 : 0) +
+    clubIds.length +
     (showFull ? 1 : 0);
 
   const applied = [
@@ -309,7 +305,17 @@ export function Feed() {
     court === "needed" ? { key: "needed", label: "Needs a court", clear: () => setCourt("any") } : null,
     mode === "request" ? { key: "request", label: "Host approves", clear: () => setMode("any") } : null,
     skill !== "any" ? { key: "skill", label: skillLabel(skill), clear: () => setSkill("any") } : null,
-    clubId ? { key: "club", label: selectedClub?.name ?? "Selected club", clear: () => setClubId(null) } : null,
+    ...clubIds.flatMap((id) => {
+      const club = clubs.find((item) => item.id === id);
+      if (!club) return [];
+      return [
+        {
+          key: `club-${id}`,
+          label: club.name,
+          clear: () => setClubIds((current) => current.filter((item) => item !== id)),
+        },
+      ];
+    }),
     showFull ? { key: "full", label: "Full games", clear: () => setShowFull(false) } : null,
   ].filter((chip): chip is { key: string; label: string; clear: () => void } => Boolean(chip));
 
@@ -324,7 +330,7 @@ export function Feed() {
     setPlaceMode("city");
     setCityOverride(next);
     saveCity(next);
-    setClubId(null);
+    setClubIds([]);
     setCityOpen(false);
     setCityQuery("");
   }
@@ -335,7 +341,7 @@ export function Feed() {
     setCourt("any");
     setMode("any");
     setSkill("any");
-    setClubId(null);
+    setClubIds([]);
     setShowFull(false);
     setClubQuery("");
   }
@@ -642,7 +648,7 @@ export function Feed() {
             />
             <div>
               <label className="block text-sm font-semibold" htmlFor="club-search">
-                Club
+                Clubs
               </label>
               <input
                 id="club-search"
@@ -660,12 +666,13 @@ export function Feed() {
                     : `${clubChoices.length === 1 ? "1 club" : `${clubChoices.length} clubs`}`
                   : placeMode === "city" && city
                     ? `Clubs in ${city}.`
-                    : "Nearest clubs. Search if you don't see yours."}
+                    : "Nearest clubs. Search if you don't see yours."}{" "}
+                You can pick more than one.
               </p>
               {clubChoices.length > 0 ? (
                 <ul className="mt-1 max-h-56 overflow-y-auto">
                   {clubRows.map(({ club, distance }) => {
-                    const selected = club.id === clubId;
+                    const selected = clubIds.includes(club.id);
                     const detail = [club.area, club.city, distance != null ? formatDistance(distance) : null].filter(Boolean).join(" · ");
                     return (
                       <li key={club.id}>
@@ -673,7 +680,11 @@ export function Feed() {
                           type="button"
                           aria-pressed={selected}
                           className={`flex min-h-12 w-full items-center justify-between gap-3 rounded-lg px-3 py-2 text-left ${selected ? "bg-sunken" : "hover:bg-black/[0.04]"}`}
-                          onClick={() => setClubId(selected ? null : club.id)}
+                          onClick={() =>
+                            setClubIds((current) =>
+                              selected ? current.filter((id) => id !== club.id) : [...current, club.id],
+                            )
+                          }
                         >
                           <span className="min-w-0">
                             <span className="block truncate font-semibold">{club.name}</span>
