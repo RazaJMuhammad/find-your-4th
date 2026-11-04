@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo, useState } from "react";
+import { Busy } from "@/components/Busy";
+import { ListSkeleton } from "@/components/GameSkeleton";
 import { useAuth } from "@/components/AuthProvider";
 import { createClient } from "@/lib/supabase/client";
 import { errorMessage } from "@/lib/format";
@@ -53,6 +55,7 @@ export function PostForm() {
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
+    if (pending) return;
     setError(null);
     if (!selected.length) {
       setError("Pick at least one club.");
@@ -74,8 +77,8 @@ export function PostForm() {
       p_note: note,
       p_club_ids: selected.map((club) => club.id),
     });
-    setPending(false);
     if (createError) {
+      setPending(false);
       setError(errorMessage(createError));
       return;
     }
@@ -83,7 +86,7 @@ export function PostForm() {
     router.push(id ? `/games/${id}` : "/me");
   }
 
-  if (!ready) return <p className="text-muted">Loading…</p>;
+  if (!ready) return <ListSkeleton label="Loading" />;
   if (!userId) {
     return (
       <div className="space-y-3">
@@ -204,8 +207,8 @@ export function PostForm() {
       <textarea className="field" maxLength={280} placeholder="Optional note. Level, cost split, bring a racket…" value={note} onChange={(event) => setNote(event.target.value)} />
 
       {error ? <p className="text-sm text-warn">{error}</p> : null}
-      <button className="btn btn-primary w-full" type="submit" disabled={pending}>
-        {pending ? "Posting…" : "Post game"}
+      <button className="btn btn-primary w-full" type="submit" disabled={pending} aria-busy={pending}>
+        <Busy on={pending} wait="Posting…">Post game</Busy>
       </button>
     </form>
   );

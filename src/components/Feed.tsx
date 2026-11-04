@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useId, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from "react";
 import { GameCard } from "@/components/GameCard";
+import { ListSkeleton } from "@/components/GameSkeleton";
+import { LinkPending } from "@/components/LinkPending";
 import { useAuth } from "@/components/AuthProvider";
 import { createClient } from "@/lib/supabase/client";
 import { formatDistance, skillLabel } from "@/lib/format";
@@ -10,6 +12,7 @@ import { haversineKm } from "@/lib/geo";
 import { GAME_SELECT, nearestClub, normalizeGame, spotsLeft } from "@/lib/games";
 import type { Club, Game, Skill } from "@/lib/types";
 import { CITY_KEY, readCitySnapshot, readCoordsSnapshot, saveCity, saveCoords, subscribeLocation } from "@/lib/location";
+import { readFeedCache, writeFeedCache } from "@/lib/view-cache";
 
 type WhenFilter = "any" | "today" | "tomorrow" | "week" | string;
 type CourtFilter = "any" | "booked" | "needed";
@@ -95,9 +98,10 @@ function gameCount(count: number) {
 
 export function Feed() {
   const { userId, profile } = useAuth();
-  const [games, setGames] = useState<Game[]>([]);
-  const [clubs, setClubs] = useState<Club[]>([]);
-  const [loading, setLoading] = useState(true);
+  const cached = readFeedCache();
+  const [games, setGames] = useState<Game[]>(cached?.games ?? []);
+  const [clubs, setClubs] = useState<Club[]>(cached?.clubs ?? []);
+  const [loading, setLoading] = useState(!cached);
   const [error, setError] = useState<string | null>(null);
   const storedCity = useSyncExternalStore(subscribeLocation, readCitySnapshot, () => null);
   const coords = useSyncExternalStore(subscribeLocation, readCoordsSnapshot, () => null);
@@ -182,8 +186,11 @@ export function Feed() {
         if (!active) return;
         if (gameResult.error) setError(gameResult.error.message);
         else setError(null);
-        setGames((gameResult.data ?? []).map((row) => normalizeGame(row as never)));
-        setClubs((clubResult.data ?? []) as Club[]);
+        const nextGames = (gameResult.data ?? []).map((row) => normalizeGame(row as never));
+        const nextClubs = (clubResult.data ?? []) as Club[];
+        setGames(nextGames);
+        setClubs(nextClubs);
+        if (!gameResult.error) writeFeedCache({ games: nextGames, clubs: nextClubs });
         setLoading(false);
       });
     }
@@ -427,9 +434,15 @@ export function Feed() {
         </div>
       </div>
 
+      {loading && games.length > 0 ? (
+        <p className="flex items-center gap-2 text-sm text-muted" role="status">
+          <span className="spinner" aria-hidden="true" />
+          Updating games
+        </p>
+      ) : null}
       {!loading && visible.length > 0 ? <p className="text-sm text-muted">{gameCount(visible.length)}</p> : null}
 
-      {loading ? <p className="text-muted">Looking for games…</p> : null}
+      {loading && games.length === 0 ? <ListSkeleton label="Looking for games" /> : null}
       {error ? <p className="text-warn">{error}</p> : null}
 
       {!loading && visible.length === 0 ? (
@@ -457,8 +470,9 @@ export function Feed() {
       <ul className="space-y-3">
         {visible.map(({ game }) => (
           <li key={game.id}>
-            <Link href={`/games/${game.id}`} className="lift block rounded-xl border border-line bg-card p-4">
+            <Link href={`/games/${game.id}`} className="lift relative block overflow-hidden rounded-xl border border-line bg-card p-4">
               <GameCard game={game} coords={coords} />
+              <LinkPending label="Opening" />
             </Link>
           </li>
         ))}
@@ -516,7 +530,13 @@ export function Feed() {
                 />
               ) : null}
               <div className="max-h-[40dvh] space-y-1 overflow-y-auto">
-                {clubs.length === 0 ? <p className="px-3 text-sm text-muted">Loading cities…</p> : null}
+                {clubs.length === 0 ? (
+                  <div className="space-y-2" role="status" aria-label="Loading cities">
+                    <div className="skeleton h-12 w-full" />
+                    <div className="skeleton h-12 w-full" />
+                    <div className="skeleton h-12 w-full" />
+                  </div>
+                ) : null}
                 {clubs.length > 0 && filteredCities.length === 0 ? <p className="px-3 text-sm text-muted">No cities match.</p> : null}
                 {filteredCities.map((name) => {
                   const selected = placeMode === "city" && city === name;

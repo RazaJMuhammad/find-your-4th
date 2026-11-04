@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { Busy } from "@/components/Busy";
 import { useAuth } from "@/components/AuthProvider";
 import { createClient } from "@/lib/supabase/client";
 import { errorMessage, parsePlaytomicRating, safeNext } from "@/lib/format";
@@ -18,12 +19,13 @@ export function LoginForm() {
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
+    if (pending) return;
     setPending(true);
     setError(null);
     const supabase = createClient();
     const { error: signError } = await supabase.auth.signInWithPassword({ email, password });
-    setPending(false);
     if (signError) {
+      setPending(false);
       setError(signError.message);
       return;
     }
@@ -38,8 +40,8 @@ export function LoginForm() {
       <input className="field" type="email" autoComplete="email" required placeholder="Email" value={email} onChange={(event) => setEmail(event.target.value)} />
       <input className="field" type="password" autoComplete="current-password" required minLength={6} placeholder="Password" value={password} onChange={(event) => setPassword(event.target.value)} />
       {error ? <p className="text-sm text-warn">{error}</p> : null}
-      <button className="btn btn-primary w-full" type="submit" disabled={pending}>
-        {pending ? "Logging in…" : "Log in"}
+      <button className="btn btn-primary w-full" type="submit" disabled={pending} aria-busy={pending}>
+        <Busy on={pending} wait="Logging in…">Log in</Busy>
       </button>
       <p className="text-sm text-muted">
         New here?{" "}
@@ -85,6 +87,7 @@ export function SignupForm() {
 
   async function onSubmit(event: React.FormEvent) {
     event.preventDefault();
+    if (pending) return;
     setPending(true);
     setError(null);
     try {
@@ -148,8 +151,8 @@ export function SignupForm() {
         <span className="mt-2 block">The number on your Playtomic profile.</span>
       </label>
       {error ? <p className="text-sm text-warn">{error}</p> : null}
-      <button className="btn btn-primary w-full" type="submit" disabled={pending}>
-        {pending ? "Saving…" : userId ? "Save profile" : "Create account"}
+      <button className="btn btn-primary w-full" type="submit" disabled={pending} aria-busy={pending}>
+        <Busy on={pending} wait={userId ? "Saving…" : "Creating account…"}>{userId ? "Save profile" : "Create account"}</Busy>
       </button>
       {userId ? null : (
         <p className="text-sm text-muted">

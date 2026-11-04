@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { Busy } from "@/components/Busy";
 import { useAuth } from "@/components/AuthProvider";
 import { disablePush, enablePush, readPushState, type PushState } from "@/lib/push";
 
@@ -92,13 +93,13 @@ export function AlertSettings({ compact = false }: { compact?: boolean }) {
       ) : null}
       {error ? <p className="text-sm text-warn">{error}</p> : null}
       {state === "off" ? (
-        <button className="btn btn-primary w-full" type="button" disabled={pending} onClick={() => void turnOn()}>
-          {pending ? "Turning on…" : "Turn on alerts"}
+        <button className="btn btn-primary w-full" type="button" disabled={pending} aria-busy={pending} onClick={() => void turnOn()}>
+          <Busy on={pending} wait="Turning on…">Turn on alerts</Busy>
         </button>
       ) : null}
       {state === "on" && !compact ? (
-        <button className="btn btn-secondary w-full" type="button" disabled={pending} onClick={() => void turnOff()}>
-          {pending ? "Turning off…" : "Turn off alerts"}
+        <button className="btn btn-secondary w-full" type="button" disabled={pending} aria-busy={pending} onClick={() => void turnOff()}>
+          <Busy on={pending} wait="Turning off…">Turn off alerts</Busy>
         </button>
       ) : null}
     </section>

@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { AlertSettings } from "@/components/AlertSettings";
+import { Busy } from "@/components/Busy";
+import { GameSkeleton } from "@/components/GameSkeleton";
+import { LinkPending } from "@/components/LinkPending";
 import { PlayerDots } from "@/components/PlayerDots";
 import { PlayerLine } from "@/components/PlayerLine";
 import { useAuth } from "@/components/AuthProvider";
@@ -11,11 +14,12 @@ import { errorMessage, formatWhen, personName, skillLabel } from "@/lib/format";
 import { GAME_SELECT, clubsWithDistance, joinedPlayers, normalizeGame, spotsLeft } from "@/lib/games";
 import { readCoordsSnapshot, subscribeLocation } from "@/lib/location";
 import type { Contact, Game } from "@/lib/types";
+import { rememberGame, rememberedGame } from "@/lib/view-cache";
 import { whatsappHref } from "@/lib/whatsapp";
 
 export function GameDetail({ id }: { id: string }) {
   const { ready, userId, profile } = useAuth();
-  const [game, setGame] = useState<Game | null>(null);
+  const [game, setGame] = useState<Game | null>(() => rememberedGame(id));
   const [contacts, setContacts] = useState<Contact[]>([]);
   const coords = useSyncExternalStore(subscribeLocation, readCoordsSnapshot, () => null);
   const [error, setError] = useState<string | null>(null);
@@ -40,7 +44,9 @@ export function GameDetail({ id }: { id: string }) {
           setGame(null);
           return;
         }
-        setGame(normalizeGame(data as never));
+        const next = normalizeGame(data as never);
+        rememberGame(next);
+        setGame(next);
         setGameClock((current) => current ?? Date.now());
         setMissing(false);
         if (!userId) {
@@ -70,9 +76,9 @@ export function GameDetail({ id }: { id: string }) {
     setError(null);
     const supabase = createClient();
     const { error: actionError } = await supabase.rpc(fn, { p_game_id: id });
-    setPending(false);
     if (actionError) setError(errorMessage(actionError));
     await load();
+    setPending(false);
   }
 
   if (missing) {
@@ -85,7 +91,7 @@ export function GameDetail({ id }: { id: string }) {
       </div>
     );
   }
-  if (!game) return <p className="text-muted">Loading game…</p>;
+  if (!game) return <GameSkeleton />;
 
   const left = spotsLeft(game);
   const mine = game.players.find((player) => player.user_id === userId);
@@ -130,29 +136,36 @@ export function GameDetail({ id }: { id: string }) {
         <p className="font-semibold">All spots are taken</p>
       </div>
     );
-  } else if (!ready) action = <p className="text-muted">Checking your account…</p>;
-  else if (!userId) {
+  } else if (!ready) {
     action = (
-      <Link href={`/signup?next=${encodeURIComponent(next)}`} className="btn btn-primary w-full">
+      <button className="btn btn-primary w-full" type="button" disabled aria-busy="true">
+        <Busy on wait="Checking your account…">Checking your account…</Busy>
+      </button>
+    );
+  } else if (!userId) {
+    action = (
+      <Link href={`/signup?next=${encodeURIComponent(next)}`} className="btn btn-primary relative w-full overflow-hidden">
         {game.join_mode === "open" ? "Sign up to join" : "Sign up to request"}
+        <LinkPending label="Opening" />
       </Link>
     );
   } else if (!profile) {
     action = (
-      <Link href={`/signup?next=${encodeURIComponent(next)}`} className="btn btn-primary w-full">
+      <Link href={`/signup?next=${encodeURIComponent(next)}`} className="btn btn-primary relative w-full overflow-hidden">
         Finish your profile
+        <LinkPending label="Opening" />
       </Link>
     );
   } else if (game.join_mode === "open") {
     action = (
-      <button className="btn btn-primary w-full" type="button" disabled={pending} onClick={() => void act("join_game")}>
-        {pending ? "Joining…" : "Join game"}
+      <button className="btn btn-primary w-full" type="button" disabled={pending} aria-busy={pending} onClick={() => void act("join_game")}>
+        <Busy on={pending} wait="Joining…">Join game</Busy>
       </button>
     );
   } else {
     action = (
-      <button className="btn btn-primary w-full" type="button" disabled={pending} onClick={() => void act("request_spot")}>
-        {pending ? "Sending…" : "Request a spot"}
+      <button className="btn btn-primary w-full" type="button" disabled={pending} aria-busy={pending} onClick={() => void act("request_spot")}>
+        <Busy on={pending} wait="Sending…">Request a spot</Busy>
       </button>
     );
   }

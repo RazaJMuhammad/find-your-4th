@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useSyncExternalStore } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { AuthProvider } from "@/components/AuthProvider";
 import { PwaManager } from "@/components/PwaManager";
 
@@ -29,6 +29,47 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   const pathTab = pathname === "/me" ? "2" : pathname === "/post" ? "1" : pathname === "/" ? "0" : null;
   const storedTab = useSyncExternalStore(subscribeTab, readTab, () => "0");
   const tab = pathTab ?? storedTab;
+  const [navigating, setNavigating] = useState(false);
+
+  useEffect(() => {
+    setNavigating(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    function onClick(event: MouseEvent) {
+      if (event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const anchor = (event.target as Element | null)?.closest("a");
+      if (!(anchor instanceof HTMLAnchorElement)) return;
+      if (anchor.target && anchor.target !== "_self") return;
+      const href = anchor.getAttribute("href");
+      if (!href || href.startsWith("#")) return;
+      let next: URL;
+      try {
+        next = new URL(anchor.href, window.location.origin);
+      } catch {
+        return;
+      }
+      if (next.origin !== window.location.origin) return;
+      if (next.pathname === window.location.pathname && next.search === window.location.search) return;
+      setNavigating(true);
+    }
+    function onStart() {
+      setNavigating(true);
+    }
+    document.addEventListener("click", onClick, true);
+    window.addEventListener("fy4-nav-start", onStart);
+    return () => {
+      document.removeEventListener("click", onClick, true);
+      window.removeEventListener("fy4-nav-start", onStart);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!navigating) return;
+    const timer = window.setTimeout(() => setNavigating(false), 10000);
+    return () => window.clearTimeout(timer);
+  }, [navigating]);
 
   useEffect(() => {
     const current = sessionStorage.getItem(CURRENT_KEY);
@@ -42,6 +83,12 @@ export function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <AuthProvider>
       <div className="mx-auto min-h-dvh w-full max-w-lg bg-canvas">
+        {navigating ? (
+          <>
+            <div className="nav-progress" role="progressbar" aria-label="Opening" />
+            <div className="nav-shield" />
+          </>
+        ) : null}
         <header className="sticky top-0 z-20 flex items-center gap-1 border-b border-line/80 bg-card/80 px-2 py-2 pt-[max(8px,env(safe-area-inset-top))] backdrop-blur-xl">
           {showBack ? <BackButton /> : null}
           <Link href="/" className="px-2 text-xl font-semibold tracking-tight">
@@ -49,7 +96,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           </Link>
         </header>
         <PwaManager />
-        <main key={pathname} className={`page-in ${showNav ? "px-4 pb-32 pt-4" : "px-4 pb-[max(24px,env(safe-area-inset-bottom))] pt-4"}`}>
+        <main key={pathname} aria-busy={navigating} className={`page-in ${showNav ? "px-4 pb-32 pt-4" : "px-4 pb-[max(24px,env(safe-area-inset-bottom))] pt-4"}`}>
           {children}
         </main>
         {showNav ? <BottomNav tab={tab} /> : null}
@@ -63,6 +110,7 @@ function BackButton() {
   const pathname = usePathname();
 
   function goBack() {
+    window.dispatchEvent(new Event("fy4-nav-start"));
     const prev = sessionStorage.getItem(PREV_KEY);
     if (prev && prev !== pathname && prev.startsWith("/") && !prev.startsWith("//")) {
       router.push(prev);

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { Busy } from "@/components/Busy";
 import { usePathname } from "next/navigation";
 import {
   dismissInstallBanner,
@@ -88,8 +89,8 @@ export function HomeScreenCard({ dismissible = false, onDismiss }: { dismissible
       {kind === "prompt" ? (
         <>
           <p className="text-sm text-muted">Keep the feed and your games one tap away.</p>
-          <button className="btn btn-primary w-full" type="button" disabled={adding} onClick={() => void add()}>
-            {adding ? "Opening…" : "Add to Home Screen"}
+          <button className="btn btn-primary w-full" type="button" disabled={adding} aria-busy={adding} onClick={() => void add()}>
+            <Busy on={adding} wait="Opening…">Add to Home Screen</Busy>
           </button>
         </>
       ) : null}

@@ -3,7 +3,10 @@
 import Link from "next/link";
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { AlertSettings } from "@/components/AlertSettings";
+import { Busy } from "@/components/Busy";
 import { GameCard } from "@/components/GameCard";
+import { ListSkeleton } from "@/components/GameSkeleton";
+import { LinkPending } from "@/components/LinkPending";
 import { PlayerLine } from "@/components/PlayerLine";
 import { HomeScreenCard } from "@/components/PwaManager";
 import { useAuth } from "@/components/AuthProvider";
@@ -11,6 +14,7 @@ import { createClient } from "@/lib/supabase/client";
 import { errorMessage, formatRating, parsePlaytomicRating, personName } from "@/lib/format";
 import { GAME_SELECT, joinedPlayers, normalizeGame } from "@/lib/games";
 import { readCoordsSnapshot, subscribeLocation } from "@/lib/location";
+import { readMineCache, writeMineCache } from "@/lib/view-cache";
 import type { Game } from "@/lib/types";
 
 export function MyGames() {
@@ -18,8 +22,10 @@ export function MyGames() {
   const coords = useSyncExternalStore(subscribeLocation, readCoordsSnapshot, () => null);
   const [hosting, setHosting] = useState<Game[]>([]);
   const [playing, setPlaying] = useState<Game[]>([]);
+  const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pendingId, setPendingId] = useState<string | null>(null);
+  const [pendingKind, setPendingKind] = useState<"accept" | "decline" | "remove" | "cancel" | null>(null);
   const [rating, setRating] = useState("");
   const [ratingError, setRatingError] = useState<string | null>(null);
   const [ratingPending, setRatingPending] = useState(false);
@@ -33,9 +39,11 @@ export function MyGames() {
     ]).then(([hostResult, playResult]) => {
       if (hostResult.error || playResult.error) {
         setError(hostResult.error?.message || playResult.error?.message || "Could not load games");
+        setLoaded(true);
         return;
       }
-      setHosting((hostResult.data ?? []).map((row) => normalizeGame(row as never)));
+      const nextHosting = (hostResult.data ?? []).map((row) => normalizeGame(row as never));
+      setHosting(nextHosting);
       const mine = (playResult.data ?? [])
         .map((row) => {
           const gameRaw = (row as { game: unknown }).game;
@@ -44,12 +52,21 @@ export function MyGames() {
         })
         .filter((game): game is Game => Boolean(game));
       setPlaying(mine);
+      if (!hostResult.error && !playResult.error) writeMineCache(userId, nextHosting, mine);
+      setLoaded(true);
     });
   }, [userId]);
 
   useEffect(() => {
+    if (!userId) return;
+    const cached = readMineCache(userId);
+    if (cached) {
+      setHosting(cached.hosting);
+      setPlaying(cached.playing);
+      setLoaded(true);
+    }
     load();
-  }, [load]);
+  }, [load, userId]);
 
   useEffect(() => {
     if (profile?.playtomic_rating != null) setRating(profile.playtomic_rating.toFixed(2));
@@ -79,38 +96,44 @@ export function MyGames() {
 
   async function respond(playerId: string, accept: boolean) {
     setPendingId(playerId);
+    setPendingKind(accept ? "accept" : "decline");
     setError(null);
     const supabase = createClient();
     const { error: actionError } = await supabase.rpc("respond_request", {
       p_player_id: playerId,
       p_accept: accept,
     });
-    setPendingId(null);
     if (actionError) setError(errorMessage(actionError));
     await load();
+    setPendingId(null);
+    setPendingKind(null);
   }
 
   async function remove(playerId: string, name: string) {
     if (!confirm(`Remove ${name} from this game?`)) return;
     setPendingId(playerId);
+    setPendingKind("remove");
     const supabase = createClient();
     const { error: actionError } = await supabase.rpc("remove_player", { p_player_id: playerId });
-    setPendingId(null);
     if (actionError) setError(errorMessage(actionError));
     await load();
+    setPendingId(null);
+    setPendingKind(null);
   }
 
   async function cancel(gameId: string) {
     if (!confirm("Cancel this game?")) return;
     setPendingId(gameId);
+    setPendingKind("cancel");
     const supabase = createClient();
     const { error: actionError } = await supabase.rpc("cancel_game", { p_game_id: gameId });
-    setPendingId(null);
     if (actionError) setError(errorMessage(actionError));
     await load();
+    setPendingId(null);
+    setPendingKind(null);
   }
 
-  if (!ready) return <p className="text-muted">Loading…</p>;
+  if (!ready) return <ListSkeleton label="Loading your games" />;
   if (!userId) {
     return (
       <div className="space-y-3">
@@ -166,20 +189,24 @@ export function MyGames() {
           </label>
           <p className="text-sm text-muted">The number on your Playtomic profile.</p>
           {ratingError ? <p className="text-sm text-warn">{ratingError}</p> : null}
-          <button className="btn btn-secondary w-full" type="submit" disabled={ratingPending}>
-            {ratingPending ? "Saving…" : "Save level"}
+          <button className="btn btn-secondary w-full" type="submit" disabled={ratingPending} aria-busy={ratingPending}>
+            <Busy on={ratingPending} wait="Saving…">Save level</Busy>
           </button>
         </form>
       )}
       {error ? <p className="text-sm text-warn">{error}</p> : null}
 
+      {!loaded ? <ListSkeleton label="Loading your games" /> : null}
+
+      {loaded ? (
       <section className="space-y-3">
         <h2 className="text-sm text-muted">Hosting</h2>
         {upcomingHost.length === 0 ? <p className="text-sm text-muted">You are not hosting anything yet.</p> : null}
         {upcomingHost.map((game) => (
           <article key={game.id} className="lift space-y-3 rounded-xl border border-line bg-card p-4">
-            <Link href={`/games/${game.id}`} className="block">
+            <Link href={`/games/${game.id}`} className="relative block overflow-hidden">
               <GameCard game={game} coords={coords} />
+              <LinkPending label="Opening" />
             </Link>
             {game.players
               .filter((player) => player.status === "pending")
@@ -192,11 +219,11 @@ export function MyGames() {
                     rating={player.player?.playtomic_rating ?? null}
                   />
                   <span className="flex gap-2">
-                    <button className="btn btn-primary h-10 min-h-10 flex-1 px-3" type="button" disabled={pendingId === player.id} onClick={() => void respond(player.id, true)}>
-                      Accept
+                    <button className="btn btn-primary h-10 min-h-10 flex-1 px-3" type="button" disabled={pendingId === player.id} aria-busy={pendingId === player.id && pendingKind === "accept"} onClick={() => void respond(player.id, true)}>
+                      <Busy on={pendingId === player.id && pendingKind === "accept"} wait="Accepting…">Accept</Busy>
                     </button>
-                    <button className="btn btn-secondary h-10 min-h-10 flex-1 px-3" type="button" disabled={pendingId === player.id} onClick={() => void respond(player.id, false)}>
-                      Decline
+                    <button className="btn btn-secondary h-10 min-h-10 flex-1 px-3" type="button" disabled={pendingId === player.id} aria-busy={pendingId === player.id && pendingKind === "decline"} onClick={() => void respond(player.id, false)}>
+                      <Busy on={pendingId === player.id && pendingKind === "decline"} wait="Declining…">Decline</Busy>
                     </button>
                   </span>
                 </div>
@@ -212,28 +239,32 @@ export function MyGames() {
                     className="btn btn-danger h-10 min-h-10 px-3 text-sm"
                     type="button"
                     disabled={pendingId === player.id}
+                    aria-busy={pendingId === player.id}
                     onClick={() => void remove(player.id, personName(player.player))}
                   >
-                    Remove
+                    <Busy on={pendingId === player.id && pendingKind === "remove"} wait="Removing…">Remove</Busy>
                   </button>
                 }
               />
             ))}
-            <button className="btn btn-danger w-full" type="button" disabled={pendingId === game.id} onClick={() => void cancel(game.id)}>
-              Cancel game
+            <button className="btn btn-danger w-full" type="button" disabled={pendingId === game.id} aria-busy={pendingId === game.id} onClick={() => void cancel(game.id)}>
+              <Busy on={pendingId === game.id && pendingKind === "cancel"} wait="Cancelling…">Cancel game</Busy>
             </button>
           </article>
         ))}
       </section>
+      ) : null}
 
+      {loaded ? (
       <section className="space-y-3">
         <h2 className="text-sm text-muted">Playing</h2>
         {playing.length === 0 ? <p className="text-sm text-muted">You have not joined a game yet.</p> : null}
         {playing.map((game) => {
           const mine = game.players.find((player) => player.user_id === userId);
           return (
-            <Link key={game.id} href={`/games/${game.id}`} className="lift block rounded-xl border border-line bg-card p-4">
+            <Link key={game.id} href={`/games/${game.id}`} className="lift relative block overflow-hidden rounded-xl border border-line bg-card p-4">
               <GameCard game={game} coords={coords} />
+              <LinkPending label="Opening" />
               <p className="mt-3 text-sm text-muted">
                 {mine?.status === "pending" ? "Request waiting" : mine?.status === "joined" ? "You're in" : mine?.status}
               </p>
@@ -241,6 +272,7 @@ export function MyGames() {
           );
         })}
       </section>
+      ) : null}
     </div>
   );
 }
