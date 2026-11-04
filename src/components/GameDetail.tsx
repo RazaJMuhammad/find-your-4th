@@ -24,12 +24,13 @@ export function GameDetail({ id }: { id: string }) {
   const coords = useSyncExternalStore(subscribeLocation, readCoordsSnapshot, () => null);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
+  const [managing, setManaging] = useState<"leave" | "cancel" | null>(null);
   const [missing, setMissing] = useState(false);
   const [gameClock, setGameClock] = useState<number | null>(null);
 
   const load = useCallback(() => {
     const supabase = createClient();
-    void supabase
+    return supabase
       .from("games")
       .select(GAME_SELECT)
       .eq("id", id)
@@ -81,6 +82,31 @@ export function GameDetail({ id }: { id: string }) {
     setPending(false);
   }
 
+  async function leaveGame() {
+    const row = game?.players.find((player) => player.user_id === userId);
+    const waiting = row?.status === "pending";
+    const message = waiting ? "Withdraw your request?" : "Your spot opens up for someone else.";
+    if (!confirm(message)) return;
+    setManaging("leave");
+    setError(null);
+    const supabase = createClient();
+    const { error: actionError } = await supabase.rpc("leave_game", { p_game_id: id });
+    if (actionError) setError(errorMessage(actionError));
+    await load();
+    setManaging(null);
+  }
+
+  async function cancelGame() {
+    if (!confirm("Players are told, and the game leaves the feed.")) return;
+    setManaging("cancel");
+    setError(null);
+    const supabase = createClient();
+    const { error: actionError } = await supabase.rpc("cancel_game", { p_game_id: id });
+    if (actionError) setError(errorMessage(actionError));
+    await load();
+    setManaging(null);
+  }
+
   if (missing) {
     return (
       <div className="space-y-3">
@@ -102,14 +128,28 @@ export function GameDetail({ id }: { id: string }) {
   const next = `/games/${id}`;
 
   let status: React.ReactNode = null;
+  let membership: React.ReactNode = null;
   let action: React.ReactNode = null;
-  if (isHost) {
+  if (game.status === "cancelled") {
+    status = (
+      <div className="status status-closed" role="status">
+        <p className="font-semibold">This game is cancelled</p>
+      </div>
+    );
+  } else if (isHost) {
     status = (
       <div className="status status-host" role="status">
         <p className="font-semibold">You&apos;re hosting</p>
         <p className="mt-1 text-sm text-muted">Manage requests in My games.</p>
       </div>
     );
+    if (game.status === "open") {
+      membership = (
+        <button className="btn btn-danger w-full" type="button" disabled={managing != null} aria-busy={managing === "cancel"} onClick={() => void cancelGame()}>
+          <Busy on={managing === "cancel"} wait="Cancelling…">Cancel game</Busy>
+        </button>
+      );
+    }
   } else if (mine?.status === "joined") {
     status = (
       <div className="status status-in" role="status">
@@ -117,6 +157,13 @@ export function GameDetail({ id }: { id: string }) {
         <p className="mt-1 text-sm text-muted">You have a spot in this game.</p>
       </div>
     );
+    if (game.status === "open") {
+      membership = (
+        <button className="btn btn-danger w-full" type="button" disabled={managing != null} aria-busy={managing === "leave"} onClick={() => void leaveGame()}>
+          <Busy on={managing === "leave"} wait="Leaving…">Leave game</Busy>
+        </button>
+      );
+    }
   } else if (mine?.status === "pending") {
     status = (
       <div className="status status-wait" role="status">
@@ -124,6 +171,13 @@ export function GameDetail({ id }: { id: string }) {
         <p className="mt-1 text-sm text-muted">Waiting for the host to accept.</p>
       </div>
     );
+    if (game.status === "open") {
+      membership = (
+        <button className="btn btn-secondary w-full" type="button" disabled={managing != null} aria-busy={managing === "leave"} onClick={() => void leaveGame()}>
+          <Busy on={managing === "leave"} wait="Withdrawing…">Withdraw request</Busy>
+        </button>
+      );
+    }
   } else if (started || game.status !== "open") {
     status = (
       <div className="status status-closed" role="status">
@@ -189,6 +243,7 @@ export function GameDetail({ id }: { id: string }) {
       </div>
 
       {status}
+      {membership}
 
       <ul className="flex flex-wrap gap-2">
         {places.map(({ club }) => (

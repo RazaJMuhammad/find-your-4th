@@ -42,6 +42,14 @@ body {
   box-shadow: 0 0 0 3px rgb(15 81 50 / 0.12);
 }
 
+input[type="date"].field,
+input[type="time"].field {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
 textarea.field {
   padding-top: 12px;
   padding-bottom: 12px;

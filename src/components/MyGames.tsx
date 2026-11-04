@@ -25,7 +25,7 @@ export function MyGames() {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pendingId, setPendingId] = useState<string | null>(null);
-  const [pendingKind, setPendingKind] = useState<"accept" | "decline" | "remove" | "cancel" | null>(null);
+  const [pendingKind, setPendingKind] = useState<"accept" | "decline" | "remove" | "cancel" | "leave" | null>(null);
   const [rating, setRating] = useState("");
   const [ratingError, setRatingError] = useState<string | null>(null);
   const [ratingPending, setRatingPending] = useState(false);
@@ -33,7 +33,7 @@ export function MyGames() {
   const load = useCallback(() => {
     if (!userId) return;
     const supabase = createClient();
-    void Promise.all([
+    return Promise.all([
       supabase.from("games").select(GAME_SELECT).eq("host_id", userId).order("starts_at", { ascending: true }),
       supabase.from("game_players").select(`status, game:games!game_players_game_id_fkey (${GAME_SELECT})`).eq("user_id", userId),
     ]).then(([hostResult, playResult]) => {
@@ -121,8 +121,22 @@ export function MyGames() {
     setPendingKind(null);
   }
 
+  async function leave(gameId: string, waiting: boolean) {
+    const message = waiting ? "Withdraw your request?" : "Your spot opens up for someone else.";
+    if (!confirm(message)) return;
+    setPendingId(gameId);
+    setPendingKind("leave");
+    setError(null);
+    const supabase = createClient();
+    const { error: actionError } = await supabase.rpc("leave_game", { p_game_id: gameId });
+    if (actionError) setError(errorMessage(actionError));
+    await load();
+    setPendingId(null);
+    setPendingKind(null);
+  }
+
   async function cancel(gameId: string) {
-    if (!confirm("Cancel this game?")) return;
+    if (!confirm("Players are told, and the game leaves the feed.")) return;
     setPendingId(gameId);
     setPendingKind("cancel");
     const supabase = createClient();
@@ -148,6 +162,10 @@ export function MyGames() {
   }
 
   const upcomingHost = hosting.filter((game) => game.status === "open");
+  const activePlaying = playing.filter((game) => {
+    const row = game.players.find((player) => player.user_id === userId);
+    return row?.status === "joined" || row?.status === "pending";
+  });
 
   return (
     <div className="space-y-6">
@@ -258,17 +276,32 @@ export function MyGames() {
       {loaded ? (
       <section className="space-y-3">
         <h2 className="text-sm text-muted">Playing</h2>
-        {playing.length === 0 ? <p className="text-sm text-muted">You have not joined a game yet.</p> : null}
-        {playing.map((game) => {
+        {activePlaying.length === 0 ? <p className="text-sm text-muted">You have not joined a game yet.</p> : null}
+        {activePlaying.map((game) => {
           const mine = game.players.find((player) => player.user_id === userId);
+          if (mine?.status !== "joined" && mine?.status !== "pending") return null;
+          const waiting = mine.status === "pending";
           return (
-            <Link key={game.id} href={`/games/${game.id}`} className="lift relative block overflow-hidden rounded-xl border border-line bg-card p-4">
-              <GameCard game={game} coords={coords} />
-              <LinkPending label="Opening" />
-              <p className="mt-3 text-sm text-muted">
-                {mine?.status === "pending" ? "Request waiting" : mine?.status === "joined" ? "You're in" : mine?.status}
-              </p>
-            </Link>
+            <article key={game.id} className="lift space-y-3 rounded-xl border border-line bg-card p-4">
+              <Link href={`/games/${game.id}`} className="relative block overflow-hidden">
+                <GameCard game={game} coords={coords} />
+                <LinkPending label="Opening" />
+                <p className="mt-3 text-sm text-muted">{waiting ? "Request waiting" : "You're in"}</p>
+              </Link>
+              {game.status === "open" ? (
+                <button
+                  className={waiting ? "btn btn-secondary w-full" : "btn btn-danger w-full"}
+                  type="button"
+                  disabled={pendingId === game.id}
+                  aria-busy={pendingId === game.id && pendingKind === "leave"}
+                  onClick={() => void leave(game.id, waiting)}
+                >
+                  <Busy on={pendingId === game.id && pendingKind === "leave"} wait={waiting ? "Withdrawing…" : "Leaving…"}>
+                    {waiting ? "Withdraw request" : "Leave game"}
+                  </Busy>
+                </button>
+              ) : null}
+            </article>
           );
         })}
       </section>
