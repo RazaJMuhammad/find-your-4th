@@ -4,9 +4,10 @@ import Link from "next/link";
 import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
 import { AlertSettings } from "@/components/AlertSettings";
 import { PlayerDots } from "@/components/PlayerDots";
+import { PlayerLine } from "@/components/PlayerLine";
 import { useAuth } from "@/components/AuthProvider";
 import { createClient } from "@/lib/supabase/client";
-import { errorMessage, formatWhen, skillLabel } from "@/lib/format";
+import { errorMessage, formatWhen, personName, skillLabel } from "@/lib/format";
 import { GAME_SELECT, clubsWithDistance, joinedPlayers, normalizeGame, spotsLeft } from "@/lib/games";
 import { readCoordsSnapshot, subscribeLocation } from "@/lib/location";
 import type { Contact, Game } from "@/lib/types";
@@ -78,7 +79,7 @@ export function GameDetail({ id }: { id: string }) {
     return (
       <div className="space-y-3">
         <h1 className="font-semibold text-4xl">Game unavailable</h1>
-        <Link href="/" className="font-semibold text-accent">
+        <Link href="/" className="btn btn-secondary">
           Back to the feed
         </Link>
       </div>
@@ -94,21 +95,41 @@ export function GameDetail({ id }: { id: string }) {
   const others = contacts.filter((contact) => contact.user_id !== userId);
   const next = `/games/${id}`;
 
+  let status: React.ReactNode = null;
   let action: React.ReactNode = null;
   if (isHost) {
-    action = (
-      <Link href="/me" className="btn btn-ghost w-full">
-        You are hosting this
-      </Link>
+    status = (
+      <div className="status status-host" role="status">
+        <p className="font-semibold">You&apos;re hosting</p>
+        <p className="mt-1 text-sm text-muted">Manage requests in My games.</p>
+      </div>
     );
   } else if (mine?.status === "joined") {
-    action = <p className="text-center text-accent">You are in.</p>;
+    status = (
+      <div className="status status-in" role="status">
+        <p className="font-semibold">You&apos;re in</p>
+        <p className="mt-1 text-sm text-muted">You have a spot in this game.</p>
+      </div>
+    );
   } else if (mine?.status === "pending") {
-    action = <p className="text-center text-warn">Request sent. Waiting for the host.</p>;
+    status = (
+      <div className="status status-wait" role="status">
+        <p className="font-semibold">Request sent</p>
+        <p className="mt-1 text-sm text-muted">Waiting for the host to accept.</p>
+      </div>
+    );
   } else if (started || game.status !== "open") {
-    action = <p className="text-center text-muted">This game is closed.</p>;
+    status = (
+      <div className="status status-closed" role="status">
+        <p className="font-semibold">This game is closed</p>
+      </div>
+    );
   } else if (left === 0) {
-    action = <p className="text-center text-muted">All spots are taken.</p>;
+    status = (
+      <div className="status status-closed" role="status">
+        <p className="font-semibold">All spots are taken</p>
+      </div>
+    );
   } else if (!ready) action = <p className="text-muted">Checking your account…</p>;
   else if (!userId) {
     action = (
@@ -138,9 +159,6 @@ export function GameDetail({ id }: { id: string }) {
 
   return (
     <div className="space-y-5">
-      <Link href="/" className="text-sm text-muted">
-        Feed
-      </Link>
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
           <h1 className="font-semibold text-3xl leading-tight">{formatWhen(game.starts_at)}</h1>
@@ -157,6 +175,8 @@ export function GameDetail({ id }: { id: string }) {
         <PlayerDots game={game} />
       </div>
 
+      {status}
+
       <ul className="flex flex-wrap gap-2">
         {places.map(({ club }) => (
           <li key={club.id} className="rounded-full border border-line bg-card px-3 py-1.5 text-sm font-semibold leading-snug">
@@ -170,13 +190,12 @@ export function GameDetail({ id }: { id: string }) {
       <section>
         <h2 className="text-sm text-muted">Players</h2>
         <ul className="mt-2 space-y-2">
-          <li className="rounded-lg bg-card border border-line px-3 py-3">
-            {game.host?.first_name} {game.host?.surname}
-            <span className="block text-xs text-muted">Host</span>
+          <li>
+            <PlayerLine name={personName(game.host)} role="Host" rating={game.host?.playtomic_rating ?? null} />
           </li>
           {joinedPlayers(game).map((player) => (
-            <li key={player.id} className="rounded-lg bg-card border border-line px-3 py-3">
-              {player.player?.first_name} {player.player?.surname}
+            <li key={player.id}>
+              <PlayerLine name={personName(player.player)} role="Player" rating={player.player?.playtomic_rating ?? null} />
             </li>
           ))}
         </ul>
@@ -184,17 +203,19 @@ export function GameDetail({ id }: { id: string }) {
 
       {others.length > 0 ? (
         <section className="space-y-2">
-          <h2 className="text-sm text-muted">WhatsApp</h2>
+          <h2 className="font-semibold">Message players</h2>
+          <p className="text-sm text-muted">Opens WhatsApp. Numbers stay hidden until you are in the game.</p>
           {others.map((contact) => (
             <a
               key={contact.user_id}
-              className="btn btn-ghost w-full"
+              className="btn btn-secondary w-full"
               href={whatsappHref(
                 contact.phone,
                 `Hi ${contact.first_name}, I'm in for the FindYour4th game on ${formatWhen(game.starts_at)} at ${game.clubs.map((club) => club.name).join(" / ")}.`,
               )}
             >
-              Message {contact.first_name}
+              <MessageIcon />
+              WhatsApp {contact.first_name}
             </a>
           ))}
         </section>
@@ -205,7 +226,15 @@ export function GameDetail({ id }: { id: string }) {
       ) : null}
       {userId && (isHost || mine?.status === "joined" || mine?.status === "pending") ? <AlertSettings compact /> : null}
       {error ? <p className="text-sm text-warn">{error}</p> : null}
-      <div className="sticky bottom-3 -mx-4 bg-canvas/80 px-4 py-3 backdrop-blur-md">{action}</div>
+      {action ? <div className="dock">{action}</div> : null}
     </div>
+  );
+}
+
+function MessageIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M7 18.5 4 21V6.8A1.8 1.8 0 0 1 5.8 5h12.4A1.8 1.8 0 0 1 20 6.8v8.4a1.8 1.8 0 0 1-1.8 1.8H7Z" />
+    </svg>
   );
 }

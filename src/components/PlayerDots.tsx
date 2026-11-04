@@ -18,28 +18,23 @@ export function PlayerDots({ game }: { game: Game }) {
   ].slice(0, 4);
 
   const filledCount = slots.filter((slot) => slot.filled).length;
-  const firstOpen = slots.find((slot) => !slot.filled)?.key;
-
   const near = slots.slice(0, 2);
   const far = slots.slice(2, 4);
 
   return (
     <div className="court" role="img" aria-label={`${filledCount} of 4 players`}>
-      <Side slots={near} firstOpen={firstOpen} />
+      <Side slots={near} />
       <span className="court-net" />
-      <Side slots={far} firstOpen={firstOpen} />
+      <Side slots={far} />
     </div>
   );
 }
 
-function Side({ slots, firstOpen }: { slots: { key: string; filled: boolean }[]; firstOpen?: string }) {
+function Side({ slots }: { slots: { key: string; filled: boolean }[] }) {
   return (
     <span className="court-side">
       {slots.map((slot) => (
-        <span
-          key={slot.key}
-          className={`court-player ${slot.filled ? "is-in" : slot.key === firstOpen ? "spot-open" : "is-open"}`}
-        />
+        <span key={slot.key} className={`court-player ${slot.filled ? "is-in" : "spot-open"}`} />
       ))}
     </span>
   );

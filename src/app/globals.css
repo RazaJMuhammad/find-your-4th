@@ -78,10 +78,65 @@ textarea.field {
   opacity: 0.45;
 }
 
-.btn-ghost {
+.btn-secondary {
   background: #ffffff;
   color: #1a1a1a;
   border: 1px solid #e4e0d8;
+}
+
+.btn-danger {
+  background: #ffffff;
+  color: #9a3412;
+  border: 1px solid #e7c3b4;
+}
+
+.btn-danger:active:not(:disabled) {
+  background: #fff7f3;
+}
+
+a:focus-visible,
+button:focus-visible,
+.btn:focus-visible,
+.chip:focus-visible {
+  outline: 2px solid #0f5132;
+  outline-offset: 2px;
+}
+
+.status {
+  border-radius: 12px;
+  border: 1px solid transparent;
+  padding: 12px 14px;
+}
+
+.status-host {
+  background: rgb(15 81 50 / 0.08);
+  border-color: rgb(15 81 50 / 0.22);
+}
+
+.status-in {
+  background: #ffffff;
+  border-color: #8faf9a;
+}
+
+.status-wait {
+  background: #fff7ed;
+  border-color: #fdba74;
+}
+
+.status-closed {
+  background: #f0eee9;
+  border-color: #e4e0d8;
+  color: #6b675f;
+}
+
+.dock {
+  position: sticky;
+  bottom: calc(4.75rem + env(safe-area-inset-bottom));
+  z-index: 20;
+  margin-inline: -1rem;
+  background: rgb(246 245 242 / 0.88);
+  padding: 12px 1rem;
+  backdrop-filter: blur(12px);
 }
 
 .chip {

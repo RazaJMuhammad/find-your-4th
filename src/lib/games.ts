@@ -1,11 +1,12 @@
+import { asRating } from "@/lib/format";
 import type { Club, Game, GamePlayer } from "@/lib/types";
 import { haversineKm, type Coords } from "@/lib/geo";
 
 export const GAME_SELECT = `
   id, host_id, starts_at, spots_needed, court_booked, join_mode, skill, note, status,
-  host:profiles!games_host_id_fkey ( id, first_name, surname, city, skill ),
+  host:profiles!games_host_id_fkey ( id, first_name, surname, city, skill, playtomic_rating ),
   game_clubs ( club:clubs ( id, name, city, province, area, court_count, lat, lng ) ),
-  game_players ( id, user_id, status, player:profiles!game_players_user_id_fkey ( id, first_name, surname ) )
+  game_players ( id, user_id, status, player:profiles!game_players_user_id_fkey ( id, first_name, surname, playtomic_rating ) )
 `;
 
 type Raw = {
@@ -28,6 +29,11 @@ function one<T>(value: T | T[] | null | undefined): T | null {
   return Array.isArray(value) ? value[0] ?? null : value;
 }
 
+function withRating<T extends { playtomic_rating?: unknown }>(person: T | null): (T & { playtomic_rating: number | null }) | null {
+  if (!person) return null;
+  return { ...person, playtomic_rating: asRating(person.playtomic_rating) };
+}
+
 export function normalizeGame(raw: Raw): Game {
   const clubs = (raw.game_clubs ?? [])
     .map((row) => one(row.club))
@@ -42,9 +48,12 @@ export function normalizeGame(raw: Raw): Game {
     skill: raw.skill,
     note: raw.note,
     status: raw.status,
-    host: one(raw.host),
+    host: withRating(one(raw.host)),
     clubs,
-    players: raw.game_players ?? [],
+    players: (raw.game_players ?? []).map((player) => ({
+      ...player,
+      player: withRating(player.player),
+    })),
   };
 }
 

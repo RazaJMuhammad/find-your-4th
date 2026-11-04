@@ -18,6 +18,33 @@ export function formatDistance(km: number) {
   return `${Math.round(km)} km`;
 }
 
+export function asRating(value: unknown): number | null {
+  if (typeof value === "number" && Number.isFinite(value)) return value;
+  if (typeof value === "string" && value.trim() !== "") {
+    const rating = Number(value);
+    return Number.isFinite(rating) ? rating : null;
+  }
+  return null;
+}
+
+export function formatRating(value: number | null | undefined) {
+  if (value == null || Number.isNaN(value)) return "No level";
+  return value.toFixed(2);
+}
+
+export function parsePlaytomicRating(value: string) {
+  const rating = Number(value);
+  if (!Number.isFinite(rating) || rating < 0 || rating > 7) {
+    throw new Error("Enter a Playtomic level from 0 to 7.");
+  }
+  return Math.round(rating * 100) / 100;
+}
+
+export function personName(person: { first_name?: string | null; surname?: string | null } | null | undefined) {
+  const name = `${person?.first_name ?? ""} ${person?.surname ?? ""}`.trim();
+  return name || "Player";
+}
+
 export function skillLabel(skill: Skill) {
   if (skill === "any") return "Any level";
   if (skill === "beginner") return "Beginner";

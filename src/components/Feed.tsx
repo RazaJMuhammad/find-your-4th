@@ -441,12 +441,12 @@ export function Feed() {
               Post a game
             </Link>
             {activeCount > 0 ? (
-              <button className="btn btn-ghost" type="button" onClick={clearFilters}>
+              <button className="btn btn-secondary" type="button" onClick={clearFilters}>
                 Clear filters
               </button>
             ) : null}
             {placeMode === "gps" && radius != null ? (
-              <button className="btn btn-ghost" type="button" onClick={() => setRadius(null)}>
+              <button className="btn btn-secondary" type="button" onClick={() => setRadius(null)}>
                 Anywhere
               </button>
             ) : null}
@@ -547,7 +547,7 @@ export function Feed() {
               <span className="sr-only" aria-live="polite">
                 {visible.length === 1 ? "1 game matches" : `${visible.length} games match`}
               </span>
-              <button className="btn btn-ghost" type="button" onClick={clearFilters} disabled={activeCount === 0}>
+              <button className="btn btn-secondary" type="button" onClick={clearFilters} disabled={activeCount === 0}>
                 Clear all
               </button>
               <button className="btn btn-primary min-w-0 flex-1" type="button" onClick={closeFilters}>

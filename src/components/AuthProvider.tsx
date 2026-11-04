@@ -3,6 +3,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { disablePush } from "@/lib/push";
+import { asRating } from "@/lib/format";
 import type { Profile } from "@/lib/types";
 
 type AuthValue = {
@@ -28,6 +29,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       return null;
     }
     const next = data as Profile;
+    next.playtomic_rating = asRating(next.playtomic_rating);
     setProfile(next);
     return next;
   }, []);

@@ -97,7 +97,7 @@ export function AlertSettings({ compact = false }: { compact?: boolean }) {
         </button>
       ) : null}
       {state === "on" && !compact ? (
-        <button className="btn btn-ghost w-full" type="button" disabled={pending} onClick={() => void turnOff()}>
+        <button className="btn btn-secondary w-full" type="button" disabled={pending} onClick={() => void turnOff()}>
           {pending ? "Turning off…" : "Turn off alerts"}
         </button>
       ) : null}

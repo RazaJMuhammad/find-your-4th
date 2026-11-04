@@ -18,8 +18,9 @@ export type Profile = {
   first_name: string;
   surname: string;
   phone: string;
-  city: string;
+  city: string | null;
   skill: Skill;
+  playtomic_rating: number | null;
   lat?: number | null;
   lng?: number | null;
 };
@@ -28,7 +29,7 @@ export type GamePlayer = {
   id: string;
   user_id: string;
   status: PlayerStatus;
-  player: { id: string; first_name: string; surname: string } | null;
+  player: { id: string; first_name: string; surname: string; playtomic_rating: number | null } | null;
 };
 
 export type Game = {
@@ -41,7 +42,7 @@ export type Game = {
   skill: Skill;
   note: string | null;
   status: "open" | "cancelled";
-  host: { id: string; first_name: string; surname: string; city: string; skill: Skill } | null;
+  host: { id: string; first_name: string; surname: string; city: string | null; skill: Skill; playtomic_rating: number | null } | null;
   clubs: Club[];
   players: GamePlayer[];
 };

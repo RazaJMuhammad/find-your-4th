@@ -191,7 +191,7 @@ export function PostForm() {
       </div>
 
       <label className="block text-sm text-muted">
-        Level
+        Match level
         <select className="field mt-2" value={skill} onChange={(event) => setSkill(event.target.value as Skill)}>
           {SKILLS.map((value) => (
             <option key={value} value={value}>

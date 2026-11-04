@@ -5,9 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useAuth } from "@/components/AuthProvider";
 import { createClient } from "@/lib/supabase/client";
-import { errorMessage, safeNext } from "@/lib/format";
-import { saveCity } from "@/lib/location";
-import { SKILLS, SKILL_LABEL, type Skill } from "@/lib/types";
+import { errorMessage, parsePlaytomicRating, safeNext } from "@/lib/format";
 
 export function LoginForm() {
   const router = useRouter();
@@ -64,8 +62,7 @@ export function SignupForm() {
     email: "",
     password: "",
     phone: "",
-    city: "",
-    skill: "any" as Skill,
+    playtomic_rating: "",
   });
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
@@ -80,11 +77,9 @@ export function SignupForm() {
       p_first_name: form.first_name,
       p_surname: form.surname,
       p_phone: form.phone,
-      p_city: form.city,
-      p_skill: form.skill,
+      p_playtomic_rating: parsePlaytomicRating(form.playtomic_rating),
     });
     if (profileError) throw profileError;
-    saveCity(form.city.trim());
     await refreshProfile();
   }
 
@@ -120,7 +115,11 @@ export function SignupForm() {
   return (
     <form onSubmit={onSubmit} className="space-y-3">
       <h1 className="font-semibold text-4xl tracking-tight">{userId ? "Finish your profile" : "Join the court"}</h1>
-      <p className="text-sm text-muted">Name, WhatsApp, and a password. No confirmation email.</p>
+      <p className="text-sm text-muted">
+        {userId
+          ? "Name, WhatsApp, and your Playtomic level."
+          : "Name, WhatsApp, your Playtomic level, and a password. No confirmation email."}
+      </p>
       <div className="grid grid-cols-2 gap-2">
         <input className="field" required placeholder="Name" autoComplete="given-name" value={form.first_name} onChange={(event) => set("first_name", event.target.value)} />
         <input className="field" required placeholder="Surname" autoComplete="family-name" value={form.surname} onChange={(event) => set("surname", event.target.value)} />
@@ -132,16 +131,21 @@ export function SignupForm() {
         </>
       )}
       <input className="field" required inputMode="tel" autoComplete="tel" placeholder="WhatsApp number" value={form.phone} onChange={(event) => set("phone", event.target.value)} />
-      <input className="field" required placeholder="Home city" value={form.city} onChange={(event) => set("city", event.target.value)} />
       <label className="block text-sm text-muted">
-        Level
-        <select className="field mt-2" value={form.skill} onChange={(event) => set("skill", event.target.value as Skill)}>
-          {SKILLS.map((skill) => (
-            <option key={skill} value={skill}>
-              {SKILL_LABEL[skill]}
-            </option>
-          ))}
-        </select>
+        Playtomic level
+        <input
+          className="field mt-2"
+          type="number"
+          inputMode="decimal"
+          min={0}
+          max={7}
+          step={0.01}
+          required
+          placeholder="2.50"
+          value={form.playtomic_rating}
+          onChange={(event) => set("playtomic_rating", event.target.value)}
+        />
+        <span className="mt-2 block">The number on your Playtomic profile.</span>
       </label>
       {error ? <p className="text-sm text-warn">{error}</p> : null}
       <button className="btn btn-primary w-full" type="submit" disabled={pending}>
