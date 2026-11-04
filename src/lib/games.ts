@@ -3,7 +3,7 @@ import type { Club, Game, GamePlayer } from "@/lib/types";
 import { haversineKm, type Coords } from "@/lib/geo";
 
 export const GAME_SELECT = `
-  id, host_id, starts_at, spots_needed, court_booked, join_mode, skill, note, status,
+  id, host_id, starts_at, ends_at, spots_needed, court_booked, join_mode, skill, note, status,
   host:profiles!games_host_id_fkey ( id, first_name, surname, city, skill, playtomic_rating ),
   game_clubs ( club:clubs ( id, name, city, province, area, court_count, lat, lng ) ),
   game_players ( id, user_id, status, player:profiles!game_players_user_id_fkey ( id, first_name, surname, playtomic_rating ) )
@@ -13,6 +13,7 @@ type Raw = {
   id: string;
   host_id: string;
   starts_at: string;
+  ends_at?: string | null;
   spots_needed: number;
   court_booked: boolean;
   join_mode: Game["join_mode"];
@@ -42,6 +43,7 @@ export function normalizeGame(raw: Raw): Game {
     id: raw.id,
     host_id: raw.host_id,
     starts_at: raw.starts_at,
+    ends_at: raw.ends_at ?? raw.starts_at,
     spots_needed: raw.spots_needed,
     court_booked: raw.court_booked,
     join_mode: raw.join_mode,

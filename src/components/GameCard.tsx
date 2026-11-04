@@ -12,7 +12,7 @@ export function GameCard({ game, coords }: { game: Game; coords: Coords | null }
     <div className="flex flex-col gap-4">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0">
-          <p className="text-lg font-semibold leading-tight">{formatWhen(game.starts_at)}</p>
+          <p className="text-lg font-semibold leading-tight">{formatWhen(game.starts_at, game.ends_at)}</p>
           <p className="mt-1 text-base font-semibold">{left === 0 ? "Full" : left === 1 ? "1 spot open" : `${left} spots open`}</p>
           <p className={`mt-3 text-sm ${game.court_booked ? "text-ink" : "font-medium text-warn"}`}>
             {game.court_booked ? "Court booked" : "Needs a court"}

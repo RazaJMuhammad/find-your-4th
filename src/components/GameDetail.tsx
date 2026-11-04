@@ -15,7 +15,7 @@ import { GAME_SELECT, clubsWithDistance, joinedPlayers, normalizeGame, spotsLeft
 import { readCoordsSnapshot, subscribeLocation } from "@/lib/location";
 import type { Contact, Game } from "@/lib/types";
 import { rememberGame, rememberedGame } from "@/lib/view-cache";
-import { whatsappHref } from "@/lib/whatsapp";
+import { groupContactLines, whatsappHref } from "@/lib/whatsapp";
 
 export function GameDetail({ id }: { id: string }) {
   const { ready, userId, profile } = useAuth();
@@ -25,6 +25,8 @@ export function GameDetail({ id }: { id: string }) {
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
   const [managing, setManaging] = useState<"leave" | "cancel" | null>(null);
+  const [groupCopied, setGroupCopied] = useState(false);
+  const [groupFallback, setGroupFallback] = useState<string | null>(null);
   const [missing, setMissing] = useState(false);
   const [gameClock, setGameClock] = useState<number | null>(null);
 
@@ -107,6 +109,18 @@ export function GameDetail({ id }: { id: string }) {
     setManaging(null);
   }
 
+  async function copyGroupNumbers(people: Contact[]) {
+    const lines = groupContactLines(people);
+    setGroupCopied(false);
+    setGroupFallback(null);
+    try {
+      await navigator.clipboard.writeText(lines);
+      setGroupCopied(true);
+    } catch {
+      setGroupFallback(lines);
+    }
+  }
+
   if (missing) {
     return (
       <div className="space-y-3">
@@ -122,7 +136,9 @@ export function GameDetail({ id }: { id: string }) {
   const left = spotsLeft(game);
   const mine = game.players.find((player) => player.user_id === userId);
   const isHost = userId === game.host_id;
-  const started = gameClock != null && new Date(game.starts_at).getTime() <= gameClock;
+  const full = game.status === "open" && left === 0;
+  const playing = isHost || mine?.status === "joined";
+  const started = gameClock != null && new Date(game.ends_at).getTime() <= gameClock;
   const places = clubsWithDistance(game, coords);
   const others = contacts.filter((contact) => contact.user_id !== userId);
   const next = `/games/${id}`;
@@ -135,6 +151,23 @@ export function GameDetail({ id }: { id: string }) {
       <div className="status status-closed" role="status">
         <p className="font-semibold">This game is cancelled</p>
       </div>
+    );
+  } else if (full && playing) {
+    status = (
+      <div className="status status-set" role="status">
+        <p className="font-semibold">You&apos;re all set</p>
+        <p className="mt-1 text-sm">This game is full.</p>
+        {game.court_booked ? null : <p className="mt-1 text-sm">The court is still needed.</p>}
+      </div>
+    );
+    membership = isHost ? (
+      <button className="btn btn-danger w-full" type="button" disabled={managing != null} aria-busy={managing === "cancel"} onClick={() => void cancelGame()}>
+        <Busy on={managing === "cancel"} wait="Cancelling…">Cancel game</Busy>
+      </button>
+    ) : (
+      <button className="btn btn-danger w-full" type="button" disabled={managing != null} aria-busy={managing === "leave"} onClick={() => void leaveGame()}>
+        <Busy on={managing === "leave"} wait="Leaving…">Leave game</Busy>
+      </button>
     );
   } else if (isHost) {
     status = (
@@ -228,7 +261,7 @@ export function GameDetail({ id }: { id: string }) {
     <div className="space-y-5">
       <div className="flex items-start justify-between gap-4">
         <div className="min-w-0 flex-1">
-          <h1 className="font-semibold text-3xl leading-tight">{formatWhen(game.starts_at)}</h1>
+          <h1 className="font-semibold text-3xl leading-tight">{formatWhen(game.starts_at, game.ends_at)}</h1>
           <p className="mt-2 text-lg font-semibold">{left === 0 ? "Full" : left === 1 ? "1 spot open" : `${left} spots open`}</p>
           <p className={`mt-3 text-sm ${game.court_booked ? "text-ink" : "font-medium text-warn"}`}>
             {game.court_booked ? "Court booked" : "Court still needed"}
@@ -273,13 +306,27 @@ export function GameDetail({ id }: { id: string }) {
         <section className="space-y-2">
           <h2 className="font-semibold">Message players</h2>
           <p className="text-sm text-muted">Opens WhatsApp. Numbers stay hidden until you are in the game.</p>
+          {full && playing ? (
+            <>
+              <button className="btn btn-primary w-full" type="button" onClick={() => void copyGroupNumbers(others)}>
+                Start a WhatsApp group
+              </button>
+              {groupCopied ? <p className="text-sm text-muted">Numbers copied. In WhatsApp, start a group and add them.</p> : null}
+              {groupFallback ? (
+                <>
+                  <p className="text-sm text-muted">Copy these numbers. In WhatsApp, start a group and add them.</p>
+                  <p className="whitespace-pre-line rounded-lg border border-line bg-card px-3 py-2 text-sm">{groupFallback}</p>
+                </>
+              ) : null}
+            </>
+          ) : null}
           {others.map((contact) => (
             <a
               key={contact.user_id}
               className="btn btn-secondary w-full"
               href={whatsappHref(
                 contact.phone,
-                `Hi ${contact.first_name}, I'm in for the FindYour4th game on ${formatWhen(game.starts_at)} at ${game.clubs.map((club) => club.name).join(" / ")}.`,
+                `Hi ${contact.first_name}, I'm in for the FindYour4th game on ${formatWhen(game.starts_at, game.ends_at)} at ${game.clubs.map((club) => club.name).join(" / ")}.`,
               )}
             >
               <MessageIcon />

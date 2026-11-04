@@ -1,8 +1,16 @@
 import type { Skill } from "@/lib/types";
 
-export function formatWhen(iso: string) {
+function clock(date: Date) {
+  return date.toLocaleTimeString("en-ZA", { hour: "2-digit", minute: "2-digit" });
+}
+
+export function formatWhen(iso: string, endsAt?: string | null) {
   const date = new Date(iso);
-  const time = date.toLocaleTimeString("en-ZA", { hour: "2-digit", minute: "2-digit" });
+  const end = endsAt ? new Date(endsAt) : null;
+  const time =
+    end && !Number.isNaN(end.getTime()) && Math.abs(end.getTime() - date.getTime()) >= 60_000
+      ? `${clock(date)}–${clock(end)}`
+      : clock(date);
   const day = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
   const todayDate = new Date();
   const today = new Date(todayDate.getFullYear(), todayDate.getMonth(), todayDate.getDate()).getTime();

@@ -36,6 +36,7 @@ export type Game = {
   id: string;
   host_id: string;
   starts_at: string;
+  ends_at: string;
   spots_needed: number;
   court_booked: boolean;
   join_mode: JoinMode;

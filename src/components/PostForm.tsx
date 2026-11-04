@@ -11,12 +11,18 @@ import { errorMessage } from "@/lib/format";
 import { SKILLS, SKILL_LABEL, type Club, type JoinMode, type Skill } from "@/lib/types";
 
 function defaultWhen() {
-  const date = new Date(Date.now() + 60 * 60 * 1000);
-  date.setMinutes(0, 0, 0);
+  const from = new Date(Date.now() + 60 * 60 * 1000);
+  from.setMinutes(0, 0, 0);
+  let until = new Date(from.getTime() + 2 * 60 * 60 * 1000);
+  if (until.getDate() !== from.getDate() || until.getMonth() !== from.getMonth()) {
+    until = new Date(from);
+    until.setHours(23, 30, 0, 0);
+  }
   const pad = (value: number) => String(value).padStart(2, "0");
   return {
-    date: `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}`,
-    time: `${pad(date.getHours())}:${pad(date.getMinutes())}`,
+    date: `${from.getFullYear()}-${pad(from.getMonth() + 1)}-${pad(from.getDate())}`,
+    from: `${pad(from.getHours())}:${pad(from.getMinutes())}`,
+    until: `${pad(until.getHours())}:${pad(until.getMinutes())}`,
   };
 }
 
@@ -82,8 +88,13 @@ export function PostForm() {
       setError("A booked court is at one club.");
       return;
     }
-    const starts = new Date(`${when.date}T${when.time}`);
-    if (Number.isNaN(starts.getTime()) || starts.getTime() <= Date.now()) {
+    const starts = new Date(`${when.date}T${when.from}`);
+    const ends = new Date(`${when.date}T${when.until}`);
+    if (Number.isNaN(starts.getTime()) || Number.isNaN(ends.getTime()) || ends.getTime() <= starts.getTime()) {
+      setError("Until has to be later than from.");
+      return;
+    }
+    if (ends.getTime() <= Date.now()) {
       setError("Pick a time in the future.");
       return;
     }
@@ -91,6 +102,7 @@ export function PostForm() {
     const supabase = createClient();
     const { data, error: createError } = await supabase.rpc("create_game", {
       p_starts_at: starts.toISOString(),
+      p_ends_at: ends.toISOString(),
       p_spots_needed: spots,
       p_court_booked: courtBooked,
       p_join_mode: joinMode,
@@ -141,15 +153,19 @@ export function PostForm() {
       <section className="space-y-4">
         <div>
           <h2 className="font-semibold text-lg">When</h2>
-          <p className="mt-1 text-sm text-muted">The day and time you want to play.</p>
+          <p className="mt-1 text-sm text-muted">The hours you are free to play.</p>
         </div>
         <label className="block text-sm font-semibold">
           Date
           <input className="field mt-2" type="date" required value={when.date} onChange={(event) => setWhen({ ...when, date: event.target.value })} />
         </label>
         <label className="block text-sm font-semibold">
-          Start time
-          <input className="field mt-2" type="time" required value={when.time} onChange={(event) => setWhen({ ...when, time: event.target.value })} />
+          From
+          <input className="field mt-2" type="time" required value={when.from} onChange={(event) => setWhen({ ...when, from: event.target.value })} />
+        </label>
+        <label className="block text-sm font-semibold">
+          Until
+          <input className="field mt-2" type="time" required value={when.until} onChange={(event) => setWhen({ ...when, until: event.target.value })} />
         </label>
       </section>
 

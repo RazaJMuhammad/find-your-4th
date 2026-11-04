@@ -77,12 +77,20 @@ function matchesWhen(starts: Date, when: string, now: Date) {
   return dayKey(starts) === when;
 }
 
-function matchesTime(starts: Date, time: TimeFilter) {
+function matchesTime(starts: Date, ends: Date, time: TimeFilter) {
   if (time === "any") return true;
-  const hour = starts.getHours();
-  if (time === "morning") return hour < 12;
-  if (time === "afternoon") return hour < 17;
-  return hour >= 17;
+  if (ends.getTime() - starts.getTime() < 60_000) {
+    const hour = starts.getHours();
+    if (time === "morning") return hour < 12;
+    if (time === "afternoon") return hour < 17;
+    return hour >= 17;
+  }
+  const start = starts.getHours() + starts.getMinutes() / 60;
+  let end = ends.getHours() + ends.getMinutes() / 60;
+  if (ends.toDateString() !== starts.toDateString() || end <= start) end += 24;
+  if (time === "morning") return start < 12 && end > 0;
+  if (time === "afternoon") return start < 17 && end > 12;
+  return start < 24 && end > 17;
 }
 
 function timeLabel(time: TimeFilter) {
@@ -179,7 +187,7 @@ export function Feed() {
           .from("games")
           .select(GAME_SELECT)
           .eq("status", "open")
-          .gte("starts_at", new Date().toISOString())
+          .gte("ends_at", new Date().toISOString())
           .order("starts_at", { ascending: true }),
         supabase.from("clubs").select("id, name, city, province, area, court_count, lat, lng").order("city"),
       ]).then(([gameResult, clubResult]) => {
@@ -226,8 +234,9 @@ export function Feed() {
         if (mode !== "any" && game.join_mode !== mode) return false;
         if (skill !== "any" && game.skill !== "any" && game.skill !== skill) return false;
         const starts = new Date(game.starts_at);
+        const ends = new Date(game.ends_at);
         if (!matchesWhen(starts, when, now)) return false;
-        if (!matchesTime(starts, time)) return false;
+        if (!matchesTime(starts, ends, time)) return false;
         if (!clubId && placeMode === "gps" && coords && radius != null) {
           if (near.distance == null || near.distance > radius) return false;
         }
@@ -681,7 +690,7 @@ export function Feed() {
             <div className="flex items-center justify-between gap-4 border-t border-line pt-4">
               <div>
                 <p className="font-semibold">Include full games</p>
-                <p className="text-sm text-muted">Games that already have four players</p>
+                <p className="text-sm text-muted">Games that are already full</p>
               </div>
               <button
                 type="button"

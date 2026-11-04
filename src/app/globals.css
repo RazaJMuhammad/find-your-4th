@@ -126,6 +126,12 @@ button:focus-visible,
   border-color: #8faf9a;
 }
 
+.status-set {
+  background: #0f5132;
+  border-color: #0f5132;
+  color: #ffffff;
+}
+
 .status-wait {
   background: #fff7ed;
   border-color: #fdba74;
