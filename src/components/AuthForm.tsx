@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import { Busy } from "@/components/Busy";
 import { useAuth } from "@/components/AuthProvider";
 import { createClient } from "@/lib/supabase/client";
-import { errorMessage, parsePlaytomicRating, safeNext } from "@/lib/format";
+import { errorMessage, parsePlaytomicRating, playtomicRatingDraft, safeNext } from "@/lib/format";
 
 export function LoginForm() {
   const router = useRouter();
@@ -138,15 +138,13 @@ export function SignupForm() {
         Playtomic level
         <input
           className="field mt-2"
-          type="number"
+          type="text"
           inputMode="decimal"
-          min={0}
-          max={7}
-          step={0.01}
+          autoComplete="off"
           required
           placeholder="2.50"
           value={form.playtomic_rating}
-          onChange={(event) => set("playtomic_rating", event.target.value)}
+          onChange={(event) => set("playtomic_rating", playtomicRatingDraft(event.target.value))}
         />
         <span className="mt-2 block">The number on your Playtomic profile.</span>
       </label>

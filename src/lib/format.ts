@@ -40,8 +40,18 @@ export function formatRating(value: number | null | undefined) {
   return value.toFixed(2);
 }
 
+export function playtomicRatingDraft(value: string) {
+  const cleaned = value.replace(/,/g, ".").replace(/[^\d.]/g, "");
+  if (!cleaned) return "";
+  const dot = cleaned.indexOf(".");
+  const whole = (dot === -1 ? cleaned : cleaned.slice(0, dot)).replace(/\D/g, "").slice(0, 1);
+  if (dot === -1) return whole;
+  const fraction = cleaned.slice(dot + 1).replace(/\D/g, "").slice(0, 2);
+  return `${whole}.${fraction}`;
+}
+
 export function parsePlaytomicRating(value: string) {
-  const rating = Number(value);
+  const rating = Number(playtomicRatingDraft(value));
   if (!Number.isFinite(rating) || rating < 0 || rating > 7) {
     throw new Error("Enter a Playtomic level from 0 to 7.");
   }

@@ -11,7 +11,7 @@ import { PlayerLine } from "@/components/PlayerLine";
 import { HomeScreenCard } from "@/components/PwaManager";
 import { useAuth } from "@/components/AuthProvider";
 import { createClient } from "@/lib/supabase/client";
-import { errorMessage, formatRating, parsePlaytomicRating, personName } from "@/lib/format";
+import { errorMessage, formatRating, parsePlaytomicRating, personName, playtomicRatingDraft } from "@/lib/format";
 import { GAME_SELECT, joinedPlayers, normalizeGame } from "@/lib/games";
 import { readCoordsSnapshot, subscribeLocation } from "@/lib/location";
 import { readMineCache, writeMineCache } from "@/lib/view-cache";
@@ -194,15 +194,13 @@ export function MyGames() {
             Your Playtomic level
             <input
               className="field mt-2"
-              type="number"
+              type="text"
               inputMode="decimal"
-              min={0}
-              max={7}
-              step={0.01}
+              autoComplete="off"
               required
               placeholder="2.50"
               value={rating}
-              onChange={(event) => setRating(event.target.value)}
+              onChange={(event) => setRating(playtomicRatingDraft(event.target.value))}
             />
           </label>
           <p className="text-sm text-muted">The number on your Playtomic profile.</p>

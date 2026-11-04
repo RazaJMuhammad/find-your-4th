@@ -216,20 +216,21 @@ export function PostForm() {
           </ul>
         ) : null}
         {trimmed ? <p className="text-sm text-muted">A booked court is at one club. The others were cleared.</p> : null}
-        <div className="flex flex-wrap gap-2">
+        <ul className="flex flex-wrap gap-2">
           {selected.map((club) => (
-            <button
-              key={club.id}
-              type="button"
-              className="chip"
-              data-on="true"
-              onClick={() => setSelected((current) => current.filter((item) => item.id !== club.id))}
-            >
-              {club.name}
-              <span className="font-normal">Remove</span>
-            </button>
+            <li key={club.id} className="inline-flex max-w-full items-center gap-2 rounded-lg border border-line bg-card py-1 pl-3 pr-1">
+              <span className="min-w-0 font-semibold">{club.name}</span>
+              <button
+                type="button"
+                className="btn btn-secondary h-9 min-h-9 shrink-0 px-3 text-sm"
+                aria-label={`Remove ${club.name}`}
+                onClick={() => setSelected((current) => current.filter((item) => item.id !== club.id))}
+              >
+                Remove
+              </button>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
 
       <section className="space-y-4">
