@@ -79,7 +79,10 @@ export function HomeScreenCard({ dismissible = false, onDismiss }: { dismissible
   const card = (
     <section className="space-y-3 rounded-xl border border-line bg-card p-4">
       <div className="flex items-start justify-between gap-3">
-        <h2 className="font-semibold text-xl">Add to your home screen</h2>
+        <div className="flex items-center gap-3">
+          <img src="/icons/icon-512.png" alt="" width={48} height={48} className="size-12" />
+          <h2 className="font-semibold text-xl">Add to your home screen</h2>
+        </div>
         {dismissible ? (
           <button className="text-sm text-muted" type="button" onClick={onDismiss}>
             Not now

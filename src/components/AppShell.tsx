@@ -91,8 +91,8 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         ) : null}
         <header className="sticky top-0 z-20 flex items-center gap-1 border-b border-line/80 bg-card/80 px-2 py-2 pt-[max(8px,env(safe-area-inset-top))] backdrop-blur-xl">
           {showBack ? <BackButton /> : null}
-          <Link href="/" className="px-2 text-xl font-semibold tracking-tight">
-            FindYour<span className="text-accent">4</span>th
+          <Link href="/" className="flex h-11 items-center px-2">
+            <img src="/brand/logo.svg" alt="FindYour4th" className="h-7 w-auto" />
           </Link>
         </header>
         <PwaManager />

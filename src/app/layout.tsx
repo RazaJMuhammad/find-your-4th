@@ -18,6 +18,11 @@ export const metadata: Metadata = {
     statusBarStyle: "default",
     title: "FindYour4th",
   },
+  openGraph: {
+    title: "FindYour4th",
+    description: "Find a fourth for padel. Join an open game near you, or post one.",
+    images: [{ url: "/brand/og.png", width: 1200, height: 267, alt: "FindYour4th" }],
+  },
   icons: {
     icon: [
       { url: "/icons/icon-192.png", sizes: "192x192", type: "image/png" },
