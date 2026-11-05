@@ -288,6 +288,12 @@ export function GameDetail({ id }: { id: string }) {
 
       {game.note ? <p className="text-ink">{game.note}</p> : null}
 
+      {game.court_booked && game.playtomic_url ? (
+        <a className="btn btn-secondary w-full" href={game.playtomic_url} target="_blank" rel="noopener noreferrer">
+          View game on Playtomic
+        </a>
+      ) : null}
+
       <section>
         <h2 className="text-sm text-muted">Players</h2>
         <ul className="mt-2 space-y-2">
