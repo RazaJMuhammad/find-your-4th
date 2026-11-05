@@ -26,6 +26,15 @@ function defaultWhen() {
   };
 }
 
+function isPlaytomicUrl(value: string) {
+  try {
+    const url = new URL(value);
+    return (url.protocol === "https:" || url.protocol === "http:") && /(^|\.)playtomic\.(io|com)$/i.test(url.hostname) && value.length <= 300;
+  } catch {
+    return false;
+  }
+}
+
 export function PostForm() {
   const router = useRouter();
   const { ready, userId, profile } = useAuth();
@@ -39,6 +48,7 @@ export function PostForm() {
   const [joinMode, setJoinMode] = useState<JoinMode>("open");
   const [skill, setSkill] = useState<Skill>("any");
   const [note, setNote] = useState("");
+  const [playtomicUrl, setPlaytomicUrl] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
@@ -88,6 +98,11 @@ export function PostForm() {
       setError("A booked court is at one club.");
       return;
     }
+    const link = courtBooked ? playtomicUrl.trim() : "";
+    if (link && !isPlaytomicUrl(link)) {
+      setError("That doesn't look like a Playtomic link. Paste the link from the Playtomic app, or leave it empty.");
+      return;
+    }
     const starts = new Date(`${when.date}T${when.from}`);
     const ends = new Date(`${when.date}T${when.until}`);
     if (Number.isNaN(starts.getTime()) || Number.isNaN(ends.getTime()) || ends.getTime() <= starts.getTime()) {
@@ -109,6 +124,7 @@ export function PostForm() {
       p_skill: skill,
       p_note: note,
       p_club_ids: selected.map((club) => club.id),
+      p_playtomic_url: link || null,
     });
     if (createError) {
       setPending(false);
@@ -232,6 +248,25 @@ export function PostForm() {
           ))}
         </ul>
       </section>
+
+      {courtBooked ? (
+        <section className="space-y-4">
+          <div>
+            <h2 className="font-semibold text-lg">Playtomic game link</h2>
+            <p className="mt-1 text-sm text-muted">Optional. Paste the link to your Playtomic game so players can find it.</p>
+          </div>
+          <input
+            className="field"
+            type="url"
+            inputMode="url"
+            maxLength={300}
+            placeholder="https://app.playtomic.io/..."
+            aria-label="Playtomic game link"
+            value={playtomicUrl}
+            onChange={(event) => setPlaytomicUrl(event.target.value)}
+          />
+        </section>
+      ) : null}
 
       <section className="space-y-4">
         <div>

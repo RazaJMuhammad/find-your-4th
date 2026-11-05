@@ -42,6 +42,7 @@ export type Game = {
   join_mode: JoinMode;
   skill: Skill;
   note: string | null;
+  playtomic_url: string | null;
   status: "open" | "cancelled";
   host: { id: string; first_name: string; surname: string; city: string | null; skill: Skill; playtomic_rating: number | null } | null;
   clubs: Club[];
