@@ -14,6 +14,7 @@ values
 ('Africa Padel Three Rivers', 'africa-padel-three-rivers', 'Johannesburg', 'Gauteng', 'Three Rivers', 4, null, null),
 ('Club Padel Morningside', 'club-padel-morningside', 'Johannesburg', 'Gauteng', 'Morningside', 5, -26.078056, 28.064444),
 ('ClubPadel Pirates', 'clubpadel-pirates', 'Johannesburg', 'Gauteng', 'Greenside', 5, -26.154722, 28.012778),
+('Court Royale Premium Padel', 'court-royale-premium-padel', 'Johannesburg', 'Gauteng', 'Lenasia', 4, -26.323782, 27.853623),
 ('Crystal Padel Randburg', 'crystal-padel-randburg', 'Johannesburg', 'Gauteng', 'Randburg', 3, -26.091359, 28.002109),
 ('Epic Padel Huddle Park', 'epic-padel-huddle-park', 'Johannesburg', 'Gauteng', 'Linksfield', 4, -26.163611, 28.101111),
 ('Indoor Padel Revolution', 'indoor-padel-revolution', 'Johannesburg', 'Gauteng', 'Honeydew', 7, -26.078839, 27.925302),
