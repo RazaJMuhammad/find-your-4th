@@ -34,8 +34,10 @@ Alerts go to people involved in a game, and to players near a new one:
 - the host, when someone joins or asks to join
 - the player, when a host accepts, declines, or removes them
 - joined and waiting players, when a host cancels
-- the host and players, when the game fills or about two hours before it starts
+- the host and players, when the game fills
 - anyone with alerts on, when a game is posted within their chosen distance (10, 25, 50, or 100 km, default 25) of their last shared location, at most 5 a day
+
+New accounts get a prompt to turn alerts on right after signing up. There is no game reminder, because Playtomic already sends one.
 
 Generate the server keys and store the dispatch secret in local Vault:
 
