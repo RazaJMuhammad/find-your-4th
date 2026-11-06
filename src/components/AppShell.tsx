@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
+import { AlertPrompt } from "@/components/AlertPrompt";
 import { AuthProvider } from "@/components/AuthProvider";
 import { PwaManager } from "@/components/PwaManager";
 
@@ -100,6 +101,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
           {children}
         </main>
         {showNav ? <BottomNav tab={tab} /> : null}
+        <AlertPrompt />
       </div>
     </AuthProvider>
   );

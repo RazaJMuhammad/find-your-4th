@@ -14,7 +14,6 @@ const REASONS = [
   "A host accepts or declines your request.",
   "A game you are in is cancelled, or the host removes you.",
   "Your game fills up.",
-  "A reminder about two hours before you play.",
 ];
 
 export function AlertSettings({ compact = false }: { compact?: boolean }) {

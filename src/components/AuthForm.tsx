@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Busy } from "@/components/Busy";
 import { useAuth } from "@/components/AuthProvider";
+import { queueAlertPrompt } from "@/lib/alert-prompt";
 import { createClient } from "@/lib/supabase/client";
 import { errorMessage, parsePlaytomicRating, playtomicRatingDraft, safeNext } from "@/lib/format";
 
@@ -92,6 +93,7 @@ export function SignupForm() {
     setError(null);
     try {
       const supabase = createClient();
+      let newUserId = userId;
       if (!userId) {
         const { data, error: signError } = await supabase.auth.signUp({
           email: form.email,
@@ -101,8 +103,10 @@ export function SignupForm() {
         if (!data.session) {
           throw new Error("Account created, but sign-in did not start. Try logging in.");
         }
+        newUserId = data.session.user.id;
       }
       await saveProfile();
+      if (newUserId) queueAlertPrompt(newUserId);
       router.push(next);
       router.refresh();
     } catch (caught) {
