@@ -29,12 +29,13 @@ Open [http://localhost:3000](http://localhost:3000) on a phone, or in a narrow b
 
 FindYour4th is a progressive web app. Chromium browsers get an Add to Home Screen button. In Safari on iPhone there is no install button: tap Share, then Add to Home Screen, then Add, and open the new icon. iPhone alerts only work from that icon.
 
-Alerts go to people already involved in a game:
+Alerts go to people involved in a game, and to players near a new one:
 
 - the host, when someone joins or asks to join
 - the player, when a host accepts, declines, or removes them
 - joined and waiting players, when a host cancels
 - the host and players, when the game fills or about two hours before it starts
+- anyone with alerts on, when a game is posted within their chosen distance (10, 25, 50, or 100 km, default 25) of their last shared location, at most 5 a day
 
 Generate the server keys and store the dispatch secret in local Vault:
 
