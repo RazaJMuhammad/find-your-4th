@@ -3,9 +3,13 @@
 import { useCallback, useEffect, useState } from "react";
 import { Busy } from "@/components/Busy";
 import { useAuth } from "@/components/AuthProvider";
+import { createClient } from "@/lib/supabase/client";
 import { disablePush, enablePush, readPushState, type PushState } from "@/lib/push";
 
+const NEARBY_RADII = [10, 25, 50, 100];
+
 const REASONS = [
+  "A new game is posted near you.",
   "Someone joins a game you posted, or asks you to approve them.",
   "A host accepts or declines your request.",
   "A game you are in is cancelled, or the host removes you.",
@@ -14,7 +18,7 @@ const REASONS = [
 ];
 
 export function AlertSettings({ compact = false }: { compact?: boolean }) {
-  const { userId, profile } = useAuth();
+  const { userId, profile, refreshProfile } = useAuth();
   const [state, setState] = useState<PushState | "loading">("loading");
   const [pending, setPending] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -41,6 +45,19 @@ export function AlertSettings({ compact = false }: { compact?: boolean }) {
     refresh();
   }
 
+  async function saveNearby(enabled: boolean, radius: number) {
+    setPending(true);
+    setError(null);
+    const supabase = createClient();
+    const { error: rpcError } = await supabase.rpc("set_nearby_alerts", {
+      p_enabled: enabled,
+      p_radius_km: radius,
+    });
+    if (rpcError) setError(rpcError.message);
+    else await refreshProfile();
+    setPending(false);
+  }
+
   async function turnOff() {
     setPending(true);
     setError(null);
@@ -57,6 +74,9 @@ export function AlertSettings({ compact = false }: { compact?: boolean }) {
       </section>
     );
   }
+
+  const nearbyOn = profile.nearby_alerts ?? true;
+  const nearbyRadius = profile.nearby_radius_km ?? 25;
 
   return (
     <section className="space-y-3 rounded-xl border border-line bg-card p-4">
@@ -78,7 +98,7 @@ export function AlertSettings({ compact = false }: { compact?: boolean }) {
         <p className="text-sm leading-relaxed text-muted">
           {compact
             ? "Get a ping when someone joins, a host answers, or a game changes."
-            : "FindYour4th pings you only about games you host or have joined."}
+            : "FindYour4th pings you about games you host or have joined, and new games posted near you."}
         </p>
       ) : null}
       {!compact && state !== "needs-install" && state !== "unsupported" && state !== "missing-key" ? (
@@ -90,6 +110,60 @@ export function AlertSettings({ compact = false }: { compact?: boolean }) {
             </li>
           ))}
         </ul>
+      ) : null}
+      {state === "on" && !compact ? (
+        <div className="space-y-3 border-t border-line pt-3">
+          <div role="group" aria-label="Games near me">
+            <p className="mb-2 text-sm font-semibold">New games near me</p>
+            <div className="flex flex-wrap gap-2">
+              <button
+                className="chip chip-pill"
+                type="button"
+                data-on={nearbyOn}
+                aria-pressed={nearbyOn}
+                disabled={pending}
+                onClick={() => void saveNearby(true, nearbyRadius)}
+              >
+                On
+              </button>
+              <button
+                className="chip chip-pill"
+                type="button"
+                data-on={!nearbyOn}
+                aria-pressed={!nearbyOn}
+                disabled={pending}
+                onClick={() => void saveNearby(false, nearbyRadius)}
+              >
+                Off
+              </button>
+            </div>
+          </div>
+          {nearbyOn ? (
+            <div role="group" aria-label="Alert distance">
+              <p className="mb-2 text-sm font-semibold">Within</p>
+              <div className="flex flex-wrap gap-2">
+                {NEARBY_RADII.map((km) => (
+                  <button
+                    key={km}
+                    className="chip chip-pill"
+                    type="button"
+                    data-on={nearbyRadius === km}
+                    aria-pressed={nearbyRadius === km}
+                    disabled={pending}
+                    onClick={() => void saveNearby(true, km)}
+                  >
+                    {km} km
+                  </button>
+                ))}
+              </div>
+              <p className="mt-2 text-xs leading-5 text-muted">
+                {profile.lat == null || profile.lng == null
+                  ? "Open the games feed and allow location so we know what is near you."
+                  : "Measured from where you last opened the games feed with location on. You get at most 5 of these a day."}
+              </p>
+            </div>
+          ) : null}
+        </div>
       ) : null}
       {error ? <p className="text-sm text-warn">{error}</p> : null}
       {state === "off" ? (

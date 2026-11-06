@@ -23,6 +23,8 @@ export type Profile = {
   playtomic_rating: number | null;
   lat?: number | null;
   lng?: number | null;
+  nearby_alerts?: boolean;
+  nearby_radius_km?: number;
 };
 
 export type GamePlayer = {
